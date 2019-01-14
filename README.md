@@ -12,7 +12,7 @@ implementing a simple interface.
 ```graphql
 
 query someQuery($arg1: String!) @cache(id: "cache-key", timeout: 3600, modifier: ["arg1"])  {
-    field {
+    field(arg: $arg1) {
         property
     }
 }
