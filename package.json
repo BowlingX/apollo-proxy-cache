@@ -2,10 +2,13 @@
   "name": "apollo-proxy-cache",
   "version": "1.0.0",
   "description": "Provides an apollo-link and express (proxy) middleware setup to support a local `@cache` directive",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": "git@github.com:BowlingX/apollo-proxy-cache.git",
   "author": "David Heidrich <me@bowlingx.com>",
   "license": "MIT",
+  "files": [
+    "dist/"
+  ],
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
