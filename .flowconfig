@@ -1,0 +1,14 @@
+[ignore]
+<PROJECT_ROOT>/node_modules/graphql/utilities/buildASTSchema.js.flow
+<PROJECT_ROOT>/node_modules/graphql/type/scalars.js.flow
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+module.ignore_non_literal_requires=true
+
+[strict]

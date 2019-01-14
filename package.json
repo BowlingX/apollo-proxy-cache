@@ -1,0 +1,41 @@
+{
+  "name": "apollo-proxy-cache",
+  "version": "1.0.0",
+  "description": "Provides an apollo-link and express (proxy) middleware setup to support a local `@cache` directive",
+  "main": "index.js",
+  "repository": "git@github.com:BowlingX/apollo-proxy-cache.git",
+  "author": "David Heidrich <me@bowlingx.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
+    "@babel/plugin-transform-flow-strip-types": "^7.2.3",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-flow": "^7.0.0",
+    "eslint": "^5.12.0",
+    "eslint-config-google": "^0.11.0",
+    "eslint-plugin-flowtype": "^3.2.1",
+    "eslint-plugin-import": "^2.14.0",
+    "flow-bin": "^0.90.0",
+    "flow-copy-source": "^2.0.2",
+    "rimraf": "^2.6.3",
+    "semantic-release": "^15.13.3"
+  },
+  "scripts": {
+    "build": "yarn run build:clean && yarn run build:lib && yarn run build:flow",
+    "build:clean": "rimraf dist",
+    "build:lib": "babel src -d dist",
+    "build:flow": "flow-copy-source -v src dist"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.2.5",
+    "apollo-link": "^1.2.6",
+    "apollo-utilities": "^1.1.0-alpha.8",
+    "babel-eslint": "^10.0.1",
+    "graphql": "^14.0.2",
+    "http-proxy-middleware": "^0.19.1",
+    "lodash": "^4.17.11"
+  }
+}
