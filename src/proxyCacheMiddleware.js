@@ -45,13 +45,16 @@ export const proxyCacheMiddleware =
 
       app.use(endpoint, proxy({
         ...proxyConfig,
-        onProxyReq: (proxyReq, req) => {
+        onProxyReq: (proxyReq, req, res) => {
           // We have to rewrite the request body and Content-Length after modifications
           if (req._hasCache) {
             const data = JSON.stringify(req.body)
             delete req.body
             proxyReq.setHeader('Content-Length', Buffer.byteLength(data))
             proxyReq.write(data)
+          }
+          if (proxyConfig.onProxyReq) {
+            proxyConfig.onProxyReq(proxyReq, req, res)
           }
         },
         onProxyRes: (proxyRes, req, res) => {
@@ -73,6 +76,9 @@ export const proxyCacheMiddleware =
             console.error(`Exception during cache processing with id ${id}`, e) // eslint-disable-line
               }
             })
+          }
+          if (proxyConfig.onProxyRes) {
+            proxyConfig.onProxyRes(proxyRes, req, res)
           }
         }
       }))
