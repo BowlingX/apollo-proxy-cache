@@ -1,6 +1,6 @@
 {
   "name": "apollo-proxy-cache",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Provides an apollo-link and express (proxy) middleware setup to support a local `@cache` directive",
   "main": "dist/index.js",
   "repository": "git@github.com:BowlingX/apollo-proxy-cache.git",
@@ -17,6 +17,11 @@
     "@babel/plugin-transform-flow-strip-types": "^7.2.3",
     "@babel/preset-env": "^7.2.3",
     "@babel/preset-flow": "^7.0.0",
+    "@semantic-release/changelog": "^3.0.2",
+    "@semantic-release/commit-analyzer": "^6.1.0",
+    "@semantic-release/git": "^7.0.8",
+    "@semantic-release/npm": "^5.1.3",
+    "@semantic-release/release-notes-generator": "^7.1.4",
     "eslint": "^5.12.0",
     "eslint-config-google": "^0.11.0",
     "eslint-plugin-flowtype": "^3.2.1",
@@ -27,10 +32,21 @@
     "semantic-release": "^15.13.3"
   },
   "scripts": {
-    "build": "yarn run build:clean && yarn run build:lib && yarn run build:flow",
+    "prepare": "yarn run build:clean && yarn run build:lib && yarn run build:flow",
     "build:clean": "rimraf dist",
     "build:lib": "babel src -d dist",
-    "build:flow": "flow-copy-source -v src dist"
+    "build:flow": "flow-copy-source -v src dist",
+    "test": "yarn eslint src"
+  },
+  "release": {
+    "branch": "master",
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ]
   },
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
