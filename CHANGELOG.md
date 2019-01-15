@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.0.1...v1.0.2) (2019-01-15)
+
+
+### Bug Fixes
+
+* **proxy:** forward onProxyRes and onProxyReq event handlers. ([46026c9](https://github.com/BowlingX/apollo-proxy-cache/commit/46026c9))
+
 ## [1.0.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.0.0...v1.0.1) (2019-01-15)
 
 
