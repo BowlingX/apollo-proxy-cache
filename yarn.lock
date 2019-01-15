@@ -923,17 +923,10 @@ apollo-link@^1.2.6:
     apollo-utilities "^1.0.0"
     zen-observable-ts "^0.8.13"
 
-apollo-utilities@^1.0.0:
+apollo-utilities@^1.0.0, apollo-utilities@^1.0.27:
   version "1.0.27"
   resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.0.27.tgz#77c550f9086552376eca3a48e234a1466b5b057e"
   integrity sha512-nzrMQ89JMpNmYnVGJ4t8zN75gQbql27UDhlxNi+3OModp0Masx5g+fQmQJ5B4w2dpRuYOsdwFLmj3lQbwOKV1Q==
-  dependencies:
-    fast-json-stable-stringify "^2.0.0"
-
-apollo-utilities@^1.1.0-alpha.8:
-  version "1.1.0-alpha.8"
-  resolved "https://registry.yarnpkg.com/apollo-utilities/-/apollo-utilities-1.1.0-alpha.8.tgz#db3cc3d2d1c8ab2002c5609ed4ab13f04a48709f"
-  integrity sha512-tzRdRYD2hE2jVTKZPHPKiuVPyVyOCNn8PUPLA+ww96CxakOuwzZw6/mPPavtQtbs1t+wVDgsg5vEYR0GxPcpAw==
   dependencies:
     fast-json-stable-stringify "^2.0.0"
 
