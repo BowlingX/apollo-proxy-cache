@@ -55,9 +55,9 @@ export const didTimeout = (timeout: number, time: number) =>
 
 export const calculateArguments = (query: DocumentNode, variables: ?Object) => {
   const { id, timeout, modifier } = getDirectiveArgumentsAsObject(query, DIRECTIVE)
-  const thisId = modifier.reduce((next, path) => {
+  const thisId = modifier ? modifier.reduce((next, path) => {
     return `${next}.${_get(variables, path, '')}`
-  }, id)
+  }, id) : id
 
   if (!thisId) {
     throw new Error(`@${DIRECTIVE} directive requires a unique id.`)
