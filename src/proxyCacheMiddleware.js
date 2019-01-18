@@ -46,13 +46,10 @@ export const proxyCacheMiddleware =
       app.use(endpoint, proxy({
         ...proxyConfig,
         onProxyReq: (proxyReq, req, res) => {
-          // We have to rewrite the request body and Content-Length after modifications
-          if (req._hasCache) {
-            const data = JSON.stringify(req.body)
-            delete req.body
-            proxyReq.setHeader('Content-Length', Buffer.byteLength(data))
-            proxyReq.write(data)
-          }
+          // We have to rewrite the request body due to body-parser's removal of the content.
+          const data = JSON.stringify(req.body)
+          proxyReq.setHeader('Content-Length', Buffer.byteLength(data))
+          proxyReq.write(data)
           if (proxyConfig.onProxyReq) {
             proxyConfig.onProxyReq(proxyReq, req, res)
           }
