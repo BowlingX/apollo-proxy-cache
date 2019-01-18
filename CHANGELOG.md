@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.0.3...v1.0.4) (2019-01-18)
+
+
+### Bug Fixes
+
+* **middleware:** invalid removal of body ([e4cf62e](https://github.com/BowlingX/apollo-proxy-cache/commit/e4cf62e))
+
 ## [1.0.3](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.0.2...v1.0.3) (2019-01-18)
 
 
