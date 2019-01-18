@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.0.2...v1.0.3) (2019-01-18)
+
+
+### Bug Fixes
+
+* **nullpointer:** modifier should be optional. ([e318fad](https://github.com/BowlingX/apollo-proxy-cache/commit/e318fad))
+
 ## [1.0.2](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.0.1...v1.0.2) (2019-01-15)
 
 
