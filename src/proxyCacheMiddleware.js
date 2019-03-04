@@ -26,7 +26,7 @@ export const proxyCacheMiddleware =
           // we remove the @cache directive if it exists
           if (isCache) {
             const nextQuery = removeCacheDirective(doc)
-            const { id, timeout } = calculateArguments(doc, req.body.variables, cacheKeyModifier)
+            const { id, timeout } = calculateArguments(doc, req.body.variables, cacheKeyModifier, req)
             const possibleData = queryCache.get(id)
             if (possibleData) {
               const { data, time } = possibleData

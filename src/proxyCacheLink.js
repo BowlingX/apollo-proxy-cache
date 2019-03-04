@@ -23,7 +23,7 @@ export const proxyCacheLink = (queryCache: Cache<string, Object>, cacheKeyModifi
       const server = removeCacheDirective(operation.query)
       const { query } = operation
       if (server) operation.query = server
-      const { id, timeout } = calculateArguments(query, operation.variables, cacheKeyModifier)
+      const { id, timeout } = calculateArguments(query, operation.variables, cacheKeyModifier, operation.getContext())
 
       const possibleData = queryCache.get(id)
 
