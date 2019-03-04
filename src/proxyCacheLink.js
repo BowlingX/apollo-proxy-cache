@@ -6,9 +6,9 @@ import {
 } from 'apollo-link'
 import { hasDirectives } from 'apollo-utilities'
 import { calculateArguments, didTimeout, DIRECTIVE, removeCacheDirective } from './utils'
-import type { Cache } from './utils'
+import type { Cache, CacheKeyModifier } from './utils'
 
-export const proxyCacheLink = (queryCache: Cache<String, Object>) => {
+export const proxyCacheLink = (queryCache: Cache<string, Object>, cacheKeyModifier: CacheKeyModifier) => {
   return new class NodeCacheLink extends ApolloLink {
     request(operation: Object, forward): Observable<any> {
       const directives = 'directive @cache on QUERY'
@@ -23,7 +23,7 @@ export const proxyCacheLink = (queryCache: Cache<String, Object>) => {
       const server = removeCacheDirective(operation.query)
       const { query } = operation
       if (server) operation.query = server
-      const { id, timeout } = calculateArguments(query, operation.variables)
+      const { id, timeout } = calculateArguments(query, operation.variables, cacheKeyModifier)
 
       const possibleData = queryCache.get(id)
 

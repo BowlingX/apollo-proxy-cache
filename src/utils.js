@@ -50,14 +50,20 @@ export interface Cache<K, V> {
     set(key: K, value: V): Cache<K, V>;
 }
 
+export type CacheKeyModifier = (?string, ?Object) => ?string
+
 export const didTimeout = (timeout: number, time: number) =>
   timeout > 0 && ((time + (Number(timeout) * 1000)) < Number(new Date()))
 
-export const calculateArguments = (query: DocumentNode, variables: ?Object) => {
+export const calculateArguments = (query: DocumentNode, variables: ?Object, cacheKeyModifier: ?CacheKeyModifier) => {
   const { id, timeout, modifier } = getDirectiveArgumentsAsObject(query, DIRECTIVE)
-  const thisId = modifier ? modifier.reduce((next, path) => {
+  let thisId = modifier ? modifier.reduce((next, path) => {
     return `${next}.${_get(variables, path, '')}`
   }, id) : id
+
+  if (cacheKeyModifier) {
+    thisId = cacheKeyModifier(thisId, variables)
+  }
 
   if (!thisId) {
     throw new Error(`@${DIRECTIVE} directive requires a unique id.`)

@@ -26,10 +26,11 @@
     "eslint-config-google": "^0.11.0",
     "eslint-plugin-flowtype": "^3.2.1",
     "eslint-plugin-import": "^2.14.0",
-    "flow-bin": "^0.90.0",
+    "flow-bin": "^0.94.0",
     "flow-copy-source": "^2.0.2",
     "rimraf": "^2.6.3",
-    "semantic-release": "^15.13.3"
+    "semantic-release": "^15.13.3",
+    "babel-eslint": "^10.0.1"
   },
   "scripts": {
     "prepare": "yarn run build:clean && yarn run build:lib && yarn run build:flow",
@@ -52,8 +53,7 @@
     "@babel/polyfill": "^7.2.5",
     "apollo-link": "^1.2.6",
     "apollo-utilities": "^1.0.27",
-    "babel-eslint": "^10.0.1",
-    "graphql": "^14.0.2",
+    "graphql": "^14.1.1",
     "http-proxy-middleware": "^0.19.1",
     "lodash": "^4.17.11"
   }
