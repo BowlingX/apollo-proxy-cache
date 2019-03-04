@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.1.0...v1.1.1) (2019-03-04)
+
+
+### Bug Fixes
+
+* **context:** pass request or current context to key builder ([b5604c4](https://github.com/BowlingX/apollo-proxy-cache/commit/b5604c4))
+
 # [1.1.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.0.4...v1.1.0) (2019-03-04)
 
 
