@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.0.4...v1.1.0) (2019-03-04)
+
+
+### Features
+
+* **cacheModifier:** Added cache modifier function, bumped dependencies ([4e24acc](https://github.com/BowlingX/apollo-proxy-cache/commit/4e24acc))
+
 ## [1.0.4](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.0.3...v1.0.4) (2019-01-18)
 
 
