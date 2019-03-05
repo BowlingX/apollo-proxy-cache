@@ -6,8 +6,19 @@ import { print } from 'graphql/language/printer'
 import { hasDirectives } from 'apollo-utilities'
 import { calculateArguments, didTimeout, DIRECTIVE, removeCacheDirective } from './utils'
 import type { Cache, CacheKeyModifier } from './utils'
+import zlib from 'zlib'
 
 const CACHE_HEADER = 'X-Proxy-Cached'
+
+const decode = (req: Object, data: Buffer) => {
+  const encoding = (req.headers('content-encoding') || '').trim().toLowerCase()
+  if (encoding === 'gzip') {
+    return zlib.gunzipSync(data).toString('utf8')
+  } else if (encoding === 'deflate') {
+    return zlib.inflateSync(data).toString('utf8')
+  }
+  return data.toString('utf8')
+}
 
 export const proxyCacheMiddleware =
     (queryCache: Cache<string, Object>, cacheKeyModifier: CacheKeyModifier) =>
@@ -47,7 +58,7 @@ export const proxyCacheMiddleware =
         app.use(endpoint, proxy({
           ...proxyConfig,
           onProxyReq: (proxyReq, req, res) => {
-          // We have to rewrite the request body due to body-parser's removal of the content.
+            // We have to rewrite the request body due to body-parser's removal of the content.
             const data = JSON.stringify(req.body)
             proxyReq.setHeader('Content-Length', Buffer.byteLength(data))
             proxyReq.write(data)
@@ -59,13 +70,13 @@ export const proxyCacheMiddleware =
             if (req._hasCache) {
               const { id } = req._hasCache
               // Save data into cache
-              let body = new Buffer('')
+              let body = Buffer.from([])
               proxyRes.on('data', function(data) {
                 body = Buffer.concat([ body, data ])
               })
               proxyRes.on('end', function() {
                 try {
-                  const response = JSON.parse(body.toString())
+                  const response = JSON.parse(decode(req, body))
                   // We don't cache when there are any errors in the response
                   if (!response.errors && response.data) {
                     queryCache.set(id, { data: response.data, time: Number(new Date()) })
