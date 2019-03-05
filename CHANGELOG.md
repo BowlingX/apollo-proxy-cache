@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.2.0...v1.2.1) (2019-03-05)
+
+
+### Bug Fixes
+
+* **encode:** fixed wrong header ([beab287](https://github.com/BowlingX/apollo-proxy-cache/commit/beab287))
+
 # [1.2.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.1.1...v1.2.0) (2019-03-05)
 
 

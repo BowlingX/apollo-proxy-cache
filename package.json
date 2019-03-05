@@ -1,6 +1,6 @@
 {
   "name": "apollo-proxy-cache",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Provides an apollo-link and express (proxy) middleware setup to support a local `@cache` directive",
   "main": "dist/index.js",
   "repository": "git@github.com:BowlingX/apollo-proxy-cache.git",
