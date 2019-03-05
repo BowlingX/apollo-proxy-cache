@@ -10,8 +10,8 @@ import zlib from 'zlib'
 
 const CACHE_HEADER = 'X-Proxy-Cached'
 
-const decode = (req: Object, data: Buffer) => {
-  const encoding = (req.headers('content-encoding') || '').trim().toLowerCase()
+const decode = (res: Object, data: Buffer) => {
+  const encoding = (res.getHeader('content-encoding') || '').trim().toLowerCase()
   if (encoding === 'gzip') {
     return zlib.gunzipSync(data).toString('utf8')
   } else if (encoding === 'deflate') {
@@ -76,7 +76,7 @@ export const proxyCacheMiddleware =
               })
               proxyRes.on('end', function() {
                 try {
-                  const response = JSON.parse(decode(req, body))
+                  const response = JSON.parse(decode(res, body))
                   // We don't cache when there are any errors in the response
                   if (!response.errors && response.data) {
                     queryCache.set(id, { data: response.data, time: Number(new Date()) })
