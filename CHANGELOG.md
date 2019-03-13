@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.2.2...v1.2.3) (2019-03-13)
+
+
+### Bug Fixes
+
+* **brotli:** add support for brotli encoding ([ff0ea4c](https://github.com/BowlingX/apollo-proxy-cache/commit/ff0ea4c))
+
 ## [1.2.2](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.2.1...v1.2.2) (2019-03-13)
 
 
