@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.2.4...v1.2.5) (2019-03-13)
+
+
+### Bug Fixes
+
+* **iltorb:** use native library instead ([936191f](https://github.com/BowlingX/apollo-proxy-cache/commit/936191f))
+
 ## [1.2.4](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.2.3...v1.2.4) (2019-03-13)
 
 
