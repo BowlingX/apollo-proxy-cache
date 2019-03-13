@@ -18,7 +18,7 @@ const decode = (res: Object, data: Buffer) => {
   } else if (encoding === 'deflate') {
     return zlib.inflateSync(data).toString('utf8')
   } else if (encoding === 'br') {
-    return decompressBrotli(data).toString('utf8')
+    return new Buffer(decompressBrotli(data)).toString('utf8')
   }
   return data.toString('utf8')
 }
