@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.2.3...v1.2.4) (2019-03-13)
+
+
+### Bug Fixes
+
+* **brotli:** fixed return type to be Buffer not UInt8Array ([00d311e](https://github.com/BowlingX/apollo-proxy-cache/commit/00d311e))
+
 ## [1.2.3](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.2.2...v1.2.3) (2019-03-13)
 
 
