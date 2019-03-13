@@ -7,6 +7,7 @@ import { hasDirectives } from 'apollo-utilities'
 import { calculateArguments, didTimeout, DIRECTIVE, removeCacheDirective } from './utils'
 import type { Cache, CacheKeyModifier } from './utils'
 import zlib from 'zlib'
+import decompressBrotli from 'brotli/decompress'
 
 const CACHE_HEADER = 'X-Proxy-Cached'
 
@@ -16,6 +17,8 @@ const decode = (res: Object, data: Buffer) => {
     return zlib.gunzipSync(data).toString('utf8')
   } else if (encoding === 'deflate') {
     return zlib.inflateSync(data).toString('utf8')
+  } else if (encoding === 'br') {
+    return decompressBrotli(data).toString('utf8')
   }
   return data.toString('utf8')
 }
