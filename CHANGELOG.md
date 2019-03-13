@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.2.1...v1.2.2) (2019-03-13)
+
+
+### Bug Fixes
+
+* **request:** dont readd request body when no json ([f460814](https://github.com/BowlingX/apollo-proxy-cache/commit/f460814))
+
 ## [1.2.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.2.0...v1.2.1) (2019-03-05)
 
 
