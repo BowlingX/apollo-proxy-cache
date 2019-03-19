@@ -1,3 +1,10 @@
+## [1.2.6](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.2.5...v1.2.6) (2019-03-19)
+
+
+### Bug Fixes
+
+* **onProxyReq:** fixed a case when e.g. headers are manipulated in a callback handler (onProxyReq). ([ec8aa1c](https://github.com/BowlingX/apollo-proxy-cache/commit/ec8aa1c))
+
 ## [1.2.5](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.2.4...v1.2.5) (2019-03-13)
 
 
