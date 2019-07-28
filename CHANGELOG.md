@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.2.6...v2.0.0) (2019-07-28)
+
+
+### Features
+
+* **async:** Replaced all sync methods with async implementation including caches. ([86f06cd](https://github.com/BowlingX/apollo-proxy-cache/commit/86f06cd))
+
+
+### BREAKING CHANGES
+
+* **async:** Cache implementations are now async. Please supply the new `InMemoryCache` or `RedisCache`.
+
 ## [1.2.6](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.2.5...v1.2.6) (2019-03-19)
 
 
