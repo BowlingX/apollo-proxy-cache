@@ -27,42 +27,34 @@ export const proxyCacheLink = (queryCache: Cache<string, Object>, cacheKeyModifi
       const { id, timeout } = calculateArguments(query, operation.variables, cacheKeyModifier, operation.getContext())
 
       return new Observable(observer => {
-        try {
-          queryCache.get(id).then(data => {
-            if (data) {
-              return observer.next({ data })
-            }
-            const obs =
+        queryCache.get(id).then(data => {
+          if (data) {
+            return observer.next({ data })
+          }
+          const obs =
               server && forward
                 ? forward(operation)
                 : Observable.of({
                   data: {}
                 })
 
-            obs.subscribe({
-              next: ({ data, errors }) => {
-                if (!errors) {
-                  try {
-                    queryCache.set(id, data, timeout).then(() => {
-                      observer.next({
-                        data,
-                        errors
-                      })
-                    })
-                  } catch (e) {
-                    errorOnSet(e)
-                  }
-                }
-              },
-              error: observer.error.bind(observer),
-              complete: () => {
-                observer.complete()
+          obs.subscribe({
+            next: ({ data, errors }) => {
+              if (!errors) {
+                queryCache.set(id, data, timeout)
+                  .catch(errorOnSet)
+                observer.next({
+                  data,
+                  errors
+                })
               }
-            })
+            },
+            error: observer.error.bind(observer),
+            complete: () => {
+              observer.complete()
+            }
           })
-        } catch (e) {
-          errorOnGet(e)
-        }
+        }).catch(errorOnGet)
       })
     }
   }()
