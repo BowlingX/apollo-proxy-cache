@@ -44,6 +44,12 @@ query someQuery($arg1: String!) @cache(id: "cache-key", timeout: 3600, modifier:
 The library requires to have `body-parser` (see https://www.npmjs.com/package/body-parser or similar) in the middleware chain.
 Please add accordingly to the setup example.
 
+
+### Available Caching Backends
+
+- `InMemoryCache`, will store all data inside a `Map`
+- `RedisCache`, will store data inside redis (requires a redis `client` instance).
+
 #### Express
 
 The Express middleware will either redirect the request to your graphql server or serve the request locally (depending on the `@cache` settings for the query).
@@ -51,9 +57,9 @@ It will additionally remove the `@cache` directive and forward only the pure que
 There are no changes on your implementation required.
 
 ```js
-import { proxyCacheMiddleware } from 'apollo-proxy-cache'
+import { proxyCacheMiddleware, InMemoryCache } from 'apollo-proxy-cache'
 import express from 'express'
-const queryCache = new Map()
+const queryCache = new InMemoryCache()
 import bodyParser from 'body-parser'
 
 const proxyMiddlewareFactory = proxyCacheMiddleware(queryCache)
@@ -74,15 +80,15 @@ To speed up the initial rendering you can also setup the `proxyCacheLink`.
 This will skip any http request and server directly from your cache implementation.
 ```js
 import { createHttpLink } from 'apollo-link-http'
-import { InMemoryCache } from 'apollo-cache-inmemory'
+import { InMemoryCache as ApolloInMemoryCache } from 'apollo-cache-inmemory'
 import { from } from 'apollo-link'
 import { ApolloClient } from 'apollo-client'
-import { proxyCacheLink } from 'apollo-proxy-cache'
+import { proxyCacheLink, InMemoryCache } from 'apollo-proxy-cache'
 
- const queryCache = new Map() /* Make sure you use the same instance that you use in the middleware setup.*/
+ const queryCache = new InMemoryCache() /* Make sure you use the same instance that you use in the middleware setup.*/
 
   const proxyCache = proxyCacheLink(queryCache)
-  const cache = new InMemoryCache()
+  const cache = new ApolloInMemoryCache()
 
   const httpLink = createHttpLink({ uri: 'http://graphql-server.com' })
 
@@ -103,9 +109,9 @@ Your cache implementation needs to implement the following interface (here in fl
 
 ```js
 interface Cache<K, V> {
-    delete(key: K): boolean;
-    get(key: K): ?V;
-    set(key: K, value: V): Cache<K, V>;
+  delete(key: K): Promise<boolean>;
+  get(key: K): Promise<?V>;
+  set(key: K, value: V, timeout: number): Promise<Cache<K, V>>;
 }
 ```
 
@@ -115,7 +121,3 @@ Javascript's `Map` implements this interface, so you can use that as default.
 
 You can pass a function as second argument (`type CacheKeyModifier = (?string, ?Object) => ?string`) on  `proxyCacheLink` and `proxyCacheMiddleware` that allows you to modify the key before saving. This is useful if your queries depend on a global context. e.g. a http header that modifies the result independend of the query parameters (e.g. `Accept-Language`)
 
-### TODO
-
-- Add support for batch queries
-- Add async cache interface support
