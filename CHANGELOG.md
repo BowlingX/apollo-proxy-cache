@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v2.0.0...v2.0.1) (2019-07-28)
+
+
+### Bug Fixes
+
+* **apollo-link:** fixed async link implementation ([0e43c80](https://github.com/BowlingX/apollo-proxy-cache/commit/0e43c80))
+
 # [2.0.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v1.2.6...v2.0.0) (2019-07-28)
 
 
