@@ -11,7 +11,7 @@ import type { Cache } from './caches/types'
 
 export const proxyCacheLink = (queryCache: Cache<string, Object>, cacheKeyModifier: CacheKeyModifier) => {
   return new class NodeCacheLink extends ApolloLink {
-    async request(operation: Object, forward): Observable<any> {
+    request(operation: Object, forward): Observable<any> {
       const directives = 'directive @cache on QUERY'
       operation.setContext(({ schemas = [] }) => ({
         schemas: schemas.concat([ { directives } ])
