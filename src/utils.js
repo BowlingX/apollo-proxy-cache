@@ -3,7 +3,7 @@
 import type { DocumentNode } from 'graphql'
 import { checkDocument, cloneDeep } from 'apollo-utilities'
 import _get from 'lodash/get'
-import { decompress } from 'iltorb'
+import { decompressStream } from 'iltorb'
 import zlib from 'zlib'
 
 export function removeDirectivesFromQuery(doc: DocumentNode, directive: string) {
@@ -82,24 +82,26 @@ export async function stream(data: Object) {
   })
 }
 
+const supportsBrotli = typeof zlib.createBrotliDecompress === 'function'
+
 export async function decode(response: Object) {
   const encoding = (response.headers['content-encoding'] || '').trim().toLowerCase()
-  let encoder
+  let decoder
   if (encoding === 'gzip') {
-    encoder = zlib.createGunzip()
+    decoder = zlib.createGunzip()
   } else if (encoding === 'deflate') {
-    encoder = zlib.createInflate()
+    decoder = zlib.createInflate()
   } else if (encoding === 'br') {
     // $FlowFixMe: ignore, supported from node v11
-    if (zlib.createBrotliDecompress) {
-      encoder = zlib.createBrotliDecompress()
+    if (supportsBrotli) {
+      decoder = zlib.createBrotliDecompress()
     } else {
-      return await decompress(response)
+      decoder = decompressStream()
     }
   }
 
-  if (encoder) {
-    return await stream(response.pipe(encoder))
+  if (decoder) {
+    return await stream(response.pipe(decoder))
   }
   return await stream(response)
 }
