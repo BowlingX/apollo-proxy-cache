@@ -3,6 +3,7 @@
 <PROJECT_ROOT>/node_modules/graphql/type/scalars.js.flow
 
 [include]
+./src
 
 [libs]
 

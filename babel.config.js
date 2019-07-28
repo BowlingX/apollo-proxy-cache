@@ -1,19 +1,20 @@
 const presets = [
-    [
-        "@babel/env",
-        {
-            targets: {
-                "node": "current"
-            },
-            useBuiltIns: "usage",
-        },
-    ],
-];
+  [
+    '@babel/env',
+    {
+      targets: {
+        'node': 'current'
+      },
+      useBuiltIns: 'usage'
+    }
+  ]
+]
 
 module.exports = {
-    presets, plugins: [
-        require('@babel/plugin-proposal-export-default-from'),
-        require('@babel/plugin-transform-flow-strip-types')
-    ]
-};
+  presets, plugins: [
+    require('@babel/plugin-proposal-class-properties'),
+    require('@babel/plugin-proposal-export-default-from'),
+    require('@babel/plugin-transform-flow-strip-types')
+  ]
+}
 

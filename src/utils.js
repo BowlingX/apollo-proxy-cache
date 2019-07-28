@@ -3,6 +3,8 @@
 import type { DocumentNode } from 'graphql'
 import { checkDocument, cloneDeep } from 'apollo-utilities'
 import _get from 'lodash/get'
+import { decompress } from 'iltorb'
+import zlib from 'zlib'
 
 export function removeDirectivesFromQuery(doc: DocumentNode, directive: string) {
   const docClone = cloneDeep(doc)
@@ -44,12 +46,6 @@ export function getDirectiveArgumentsAsObject(doc: DocumentNode, directive: stri
 
 export const DIRECTIVE = 'cache'
 
-export interface Cache<K, V> {
-    delete(key: K): boolean;
-    get(key: K): ?V;
-    set(key: K, value: V): Cache<K, V>;
-}
-
 export type CacheKeyModifier = (?string, ?Object, ?Object) => ?string
 
 export const didTimeout = (timeout: number, time: number) =>
@@ -72,3 +68,50 @@ export const calculateArguments =
 
       return { id: thisId, timeout, modifier }
     }
+
+export async function stream(data: Object) {
+  const thisBuffer = []
+  return new Promise((resolve, reject) => {
+    data.on('data', data => {
+      thisBuffer.push(data.toString('utf8'))
+    }).on('end', () => {
+      resolve(thisBuffer.join(''))
+    }).on('error', ex => {
+      reject(ex)
+    })
+  })
+}
+
+export async function decode(response: Object) {
+  const encoding = (response.headers['content-encoding'] || '').trim().toLowerCase()
+  let encoder
+  if (encoding === 'gzip') {
+    encoder = zlib.createGunzip()
+  } else if (encoding === 'deflate') {
+    encoder = zlib.createInflate()
+  } else if (encoding === 'br') {
+    // $FlowFixMe: ignore, supported from node v11
+    if (zlib.createBrotliDecompress) {
+      encoder = zlib.createBrotliDecompress()
+    } else {
+      return await decompress(response)
+    }
+  }
+
+  if (encoder) {
+    return await stream(response.pipe(encoder))
+  }
+  return await stream(response)
+}
+
+
+export const errorOnSet = (e: Object) => {
+  // eslint-disable-next-line no-console
+  console.error('[CACHE] Cache implementation threw Exception on `set`', e)
+}
+
+export const errorOnGet = (e: Object) => {
+  // eslint-disable-next-line no-console
+  console.error('[CACHE] Cache implementation threw Exception on `get`', e)
+}
+

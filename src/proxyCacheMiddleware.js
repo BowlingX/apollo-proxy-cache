@@ -4,29 +4,16 @@ import proxy from 'http-proxy-middleware'
 import { parse } from 'graphql'
 import { print } from 'graphql/language/printer'
 import { hasDirectives } from 'apollo-utilities'
-import { calculateArguments, didTimeout, DIRECTIVE, removeCacheDirective } from './utils'
-import type { Cache, CacheKeyModifier } from './utils'
-import zlib from 'zlib'
-import { decompressSync } from 'iltorb'
+import { calculateArguments, decode, DIRECTIVE, errorOnGet, errorOnSet, removeCacheDirective } from './utils'
+import type { CacheKeyModifier } from './utils'
+import type { Cache } from './caches/types'
 
 const CACHE_HEADER = 'X-Proxy-Cached'
-
-const decode = (res: Object, data: Buffer) => {
-  const encoding = (res.getHeader('content-encoding') || '').trim().toLowerCase()
-  if (encoding === 'gzip') {
-    return zlib.gunzipSync(data).toString('utf8')
-  } else if (encoding === 'deflate') {
-    return zlib.inflateSync(data).toString('utf8')
-  } else if (encoding === 'br') {
-    return decompressSync(data).toString('utf8')
-  }
-  return data.toString('utf8')
-}
 
 export const proxyCacheMiddleware =
     (queryCache: Cache<string, Object>, cacheKeyModifier: CacheKeyModifier) =>
       (app: Object, endpoint: string, proxyConfig: Object) => {
-        app.use(endpoint, (req, response, next) => {
+        app.use(endpoint, async (req, response, next) => {
           if (!req.body) {
       console.warn('[skip] proxy-cache-middleware, request.body is not populated. Please add "body-parser" middleware (or similar).') // eslint-disable-line
             return next()
@@ -41,15 +28,14 @@ export const proxyCacheMiddleware =
           if (isCache) {
             const nextQuery = removeCacheDirective(doc)
             const { id, timeout } = calculateArguments(doc, req.body.variables, cacheKeyModifier, req)
-            const possibleData = queryCache.get(id)
-            if (possibleData) {
-              const { data, time } = possibleData
-              if (didTimeout(timeout, time)) {
-                queryCache.delete(id)
-              } else {
+            try {
+              const possibleData = await queryCache.get(id)
+              if (possibleData) {
                 response.set(CACHE_HEADER, 'true')
-                return response.json({ data })
+                return response.json({ data: possibleData })
               }
+            } catch (e) {
+              errorOnGet(e)
             }
             req._hasCache = { id, timeout }
             // could this be piped here (with req.pipe)
@@ -75,25 +61,18 @@ export const proxyCacheMiddleware =
               proxyReq.write(data)
             }
           },
-          onProxyRes: (proxyRes, req, res) => {
+          onProxyRes: async (proxyRes, req, res) => {
             if (req._hasCache) {
-              const { id } = req._hasCache
-              // Save data into cache
-              let body = Buffer.from([])
-              proxyRes.on('data', function(data) {
-                body = Buffer.concat([ body, data ])
-              })
-              proxyRes.on('end', function() {
-                try {
-                  const response = JSON.parse(decode(res, body))
-                  // We don't cache when there are any errors in the response
-                  if (!response.errors && response.data) {
-                    queryCache.set(id, { data: response.data, time: Number(new Date()) })
-                  }
-                } catch (e) {
-            console.error(`Exception during cache processing with id ${id}`, e) // eslint-disable-line
+              const { id, timeout } = req._hasCache
+              try {
+                const response = JSON.parse(await decode(proxyRes))
+
+                if (!response.errors && response.data) {
+                  await queryCache.set(id, response.data, timeout)
                 }
-              })
+              } catch (e) {
+                errorOnSet(e)
+              }
             }
             if (proxyConfig.onProxyRes) {
               proxyConfig.onProxyRes(proxyRes, req, res)
