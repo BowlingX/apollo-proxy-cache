@@ -1,3 +1,10 @@
+## [2.0.3](https://github.com/BowlingX/apollo-proxy-cache/compare/v2.0.2...v2.0.3) (2019-07-28)
+
+
+### Bug Fixes
+
+* **apollo-link:** optimized stack ([a83db09](https://github.com/BowlingX/apollo-proxy-cache/commit/a83db09))
+
 ## [2.0.2](https://github.com/BowlingX/apollo-proxy-cache/compare/v2.0.1...v2.0.2) (2019-07-28)
 
 
