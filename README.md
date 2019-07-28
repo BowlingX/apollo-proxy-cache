@@ -115,8 +115,6 @@ interface Cache<K, V> {
 }
 ```
 
-Javascript's `Map` implements this interface, so you can use that as default.
-
 ### Customize the cache key
 
 You can pass a function as second argument (`type CacheKeyModifier = (?string, ?Object) => ?string`) on  `proxyCacheLink` and `proxyCacheMiddleware` that allows you to modify the key before saving. This is useful if your queries depend on a global context. e.g. a http header that modifies the result independend of the query parameters (e.g. `Accept-Language`)
