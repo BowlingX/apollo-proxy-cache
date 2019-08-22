@@ -77,7 +77,7 @@ proxyMiddlewareFactory(
 #### Apollo-Link Setup (on node side)
 
 To speed up the initial rendering you can also setup the `proxyCacheLink`. 
-This will skip any http request and server directly from your cache implementation.
+This will skip any http request and serve directly from your cache implementation.
 ```js
 import { createHttpLink } from 'apollo-link-http'
 import { InMemoryCache as ApolloInMemoryCache } from 'apollo-cache-inmemory'
