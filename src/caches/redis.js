@@ -9,39 +9,20 @@ export class RedisCache implements Cache<string, Object> {
     this.client = client
   }
 
-  delete(key: string): Promise<boolean> {
-    return new Promise((resolve, reject) => {
-      this.client.del(key, (err, response) => {
-        if (err) {
-          return reject(err)
-        }
-        resolve(response === 1)
-      })
-    })
+  async delete(key: string): Promise<boolean> {
+    const result = await this.client.del(key)
+    return result === 1
   }
 
-  get(key: string): Promise<?Object> {
-    return new Promise((resolve, reject) => {
-      this.client.get(key, (err, value) => {
-        if (err) {
-          return reject(err)
-        }
-        if (value) {
-          resolve(JSON.parse(value.toString()))
-        }
-        return resolve(null)
-      })
-    })
+  async get(key: string): Promise<?Object> {
+    const result = await this.client.get(key)
+    if (result) {
+      return JSON.parse(result.toString())
+    }
+    return null
   }
 
   set(key: string, value: Object, timeout: number): Promise<Cache<string, Object>> {
-    return new Promise((resolve, reject) => {
-      this.client.set(key, JSON.stringify(value), 'EX', timeout, err => {
-        if (err) {
-          return reject(err)
-        }
-        resolve(this)
-      })
-    })
+    return this.client.set(key, JSON.stringify(value), 'EX', timeout)
   }
 }

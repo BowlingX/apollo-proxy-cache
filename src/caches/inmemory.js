@@ -1,7 +1,7 @@
 // @flow
 
 import { Cache } from './types'
-import { didTimeout } from '../utils'
+import { didTimeout } from '../utils-browser-only'
 
 // Simple in memory implementation using `Map`
 

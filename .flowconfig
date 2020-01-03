@@ -1,6 +1,8 @@
 [ignore]
 <PROJECT_ROOT>/node_modules/graphql/utilities/buildASTSchema.js.flow
 <PROJECT_ROOT>/node_modules/graphql/type/scalars.js.flow
+<PROJECT_ROOT>/node_modules/graphql/utilities/extendSchema.js.flow
+<PROJECT_ROOT>/dist/.*
 
 [include]
 ./src

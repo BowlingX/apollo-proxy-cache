@@ -3,14 +3,12 @@
 import express from 'express'
 import { proxyCacheMiddleware } from '../src/index'
 import bodyParser from 'body-parser'
-import { InMemoryCache } from '../src/caches/inmemory'
 import { RedisCache } from '../src/caches/redis'
-import redis from 'redis'
+import Redis from 'ioredis'
 
 const app = express()
-const queryCache = new InMemoryCache()
 
-const client = redis.createClient()
+const client = new Redis()
 
 const redisCache = new RedisCache(client)
 

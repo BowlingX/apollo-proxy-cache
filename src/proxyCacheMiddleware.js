@@ -4,9 +4,10 @@ import proxy from 'http-proxy-middleware'
 import { parse } from 'graphql'
 import { print } from 'graphql/language/printer'
 import { hasDirectives } from 'apollo-utilities'
-import { calculateArguments, decode, DIRECTIVE, errorOnGet, errorOnSet, removeCacheDirective } from './utils'
-import type { CacheKeyModifier } from './utils'
+import { decode } from './utils'
 import type { Cache } from './caches/types'
+import { calculateArguments, DIRECTIVE, removeCacheDirective, errorOnGet,
+  errorOnSet, type CacheKeyModifier } from './utils-browser-only'
 
 const CACHE_HEADER = 'X-Proxy-Cached'
 

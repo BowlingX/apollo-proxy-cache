@@ -5,8 +5,14 @@ import {
   Observable
 } from 'apollo-link'
 import { hasDirectives } from 'apollo-utilities'
-import { calculateArguments, DIRECTIVE, errorOnGet, errorOnSet, removeCacheDirective } from './utils'
-import type { CacheKeyModifier } from './utils'
+import {
+  calculateArguments,
+  DIRECTIVE,
+  errorOnGet,
+  errorOnSet,
+  removeCacheDirective,
+  type CacheKeyModifier
+} from './utils-browser-only'
 import type { Cache } from './caches/types'
 
 export const proxyCacheLink = (queryCache: Cache<string, Object>, cacheKeyModifier: CacheKeyModifier) => {
