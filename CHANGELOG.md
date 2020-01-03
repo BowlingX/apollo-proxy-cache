@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v2.0.4...v3.0.0) (2020-01-03)
+
+
+### Features
+
+* **browser:** adjusted structure to be browser compatible. ([35317c9](https://github.com/BowlingX/apollo-proxy-cache/commit/35317c9c8e8806b556bb4dd07834b90b2b38ade6))
+
+
+### BREAKING CHANGES
+
+* **browser:** removed support for `redis` library, added `ioredis` instead
+
 ## [2.0.4](https://github.com/BowlingX/apollo-proxy-cache/compare/v2.0.3...v2.0.4) (2019-07-28)
 
 
