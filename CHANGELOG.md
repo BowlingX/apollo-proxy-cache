@@ -1,3 +1,10 @@
+## [2.0.4](https://github.com/BowlingX/apollo-proxy-cache/compare/v2.0.3...v2.0.4) (2019-07-28)
+
+
+### Bug Fixes
+
+* **brotli:** fixed brotli decoding for legacy node versions ([983e972](https://github.com/BowlingX/apollo-proxy-cache/commit/983e972))
+
 ## [2.0.3](https://github.com/BowlingX/apollo-proxy-cache/compare/v2.0.2...v2.0.3) (2019-07-28)
 
 
