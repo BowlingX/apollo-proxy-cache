@@ -1,3 +1,17 @@
+# [4.0.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v3.0.0...v4.0.0) (2020-04-20)
+
+
+### Features
+
+* **export and dependencies:** return proxy instance by default now on server side, bumped dependencies and `http-proxy-middleware` ([bb17aa7](https://github.com/BowlingX/apollo-proxy-cache/commit/bb17aa738bc91e90a3e883ff1c40dfa8b1a95662))
+* **export and dependencies:** return proxy instance by default now on server side, bumped dependencies and `http-proxy-middleware` ([83ef725](https://github.com/BowlingX/apollo-proxy-cache/commit/83ef7252b2a9e66bab85278dcd15f0e36e024ea6))
+
+
+### BREAKING CHANGES
+
+* **export and dependencies:** Uses 1.x middleware with different import scheme, see https://github.com/chimurai/http-proxy-middleware/releases
+* **export and dependencies:** Uses 1.x middleware with different import scheme, see https://github.com/chimurai/http-proxy-middleware/releases
+
 # [3.0.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v2.0.4...v3.0.0) (2020-01-03)
 
 
