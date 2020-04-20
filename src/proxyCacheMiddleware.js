@@ -1,6 +1,6 @@
 // @flow
 
-import proxy from 'http-proxy-middleware'
+import { createProxyMiddleware } from 'http-proxy-middleware'
 import { parse } from 'graphql'
 import { print } from 'graphql/language/printer'
 import { hasDirectives } from 'apollo-utilities'
@@ -45,7 +45,7 @@ export const proxyCacheMiddleware =
           next()
         })
 
-        app.use(endpoint, proxy({
+        const proxyInstance = createProxyMiddleware({
           ...proxyConfig,
           onProxyReq: (proxyReq, req, res) => {
             let data
@@ -79,5 +79,8 @@ export const proxyCacheMiddleware =
               proxyConfig.onProxyRes(proxyRes, req, res)
             }
           }
-        }))
+        })
+
+        app.use(endpoint, proxyInstance)
+        return proxyInstance
       }
