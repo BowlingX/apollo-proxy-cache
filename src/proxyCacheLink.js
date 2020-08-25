@@ -1,11 +1,8 @@
 // @flow
 
 import {
-  ApolloLink
-} from '@apollo/client/link/core/ApolloLink'
-import {
-  Observable
-} from '@apollo/client/utilities/observables/Observable'
+  ApolloLink, Observable
+} from '@apollo/client'
 import { hasDirectives } from 'apollo-utilities'
 import {
   calculateArguments,
