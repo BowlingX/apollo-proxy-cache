@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v5.0.0...v5.0.1) (2020-08-25)
+
+
+### Bug Fixes
+
+* **apollo:** fixed import ([f26447b](https://github.com/BowlingX/apollo-proxy-cache/commit/f26447bbf07b2db298a86834d06b4d45f0836290))
+
 # [5.0.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.0.0...v5.0.0) (2020-08-25)
 
 
