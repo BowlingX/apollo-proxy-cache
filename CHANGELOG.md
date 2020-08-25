@@ -1,3 +1,15 @@
+# [5.0.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.0.0...v5.0.0) (2020-08-25)
+
+
+### Bug Fixes
+
+* **apollo:** bumped apollo client to 3.x ([65de286](https://github.com/BowlingX/apollo-proxy-cache/commit/65de2867125bc3a5b708b081ec4bc1a500a2c863))
+
+
+### BREAKING CHANGES
+
+* **apollo:** Requires apollo client 3.x
+
 # [4.0.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v3.0.0...v4.0.0) (2020-04-20)
 
 
