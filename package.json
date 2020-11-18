@@ -34,7 +34,7 @@
     "flow-bin": "^0.114.0",
     "flow-copy-source": "^2.0.2",
     "rimraf": "^2.6.3",
-    "semantic-release": "^15.14.0"
+    "semantic-release": "^17.2.3"
   },
   "scripts": {
     "prepare": "yarn run build:clean && yarn run build:lib && yarn run build:flow",
