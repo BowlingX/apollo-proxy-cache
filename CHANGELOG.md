@@ -1,3 +1,10 @@
+## [5.0.3](https://github.com/BowlingX/apollo-proxy-cache/compare/v5.0.2...v5.0.3) (2020-12-20)
+
+
+### Bug Fixes
+
+* **timeout:** only timeout if > 0 ([41a6054](https://github.com/BowlingX/apollo-proxy-cache/commit/41a6054eda9ce3215df1152cda1dd6fda11aa660))
+
 ## [5.0.2](https://github.com/BowlingX/apollo-proxy-cache/compare/v5.0.1...v5.0.2) (2020-12-20)
 
 
