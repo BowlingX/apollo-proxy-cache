@@ -1,3 +1,11 @@
+## [5.0.2](https://github.com/BowlingX/apollo-proxy-cache/compare/v5.0.1...v5.0.2) (2020-12-20)
+
+
+### Bug Fixes
+
+* **timeout:** fixed an issue that timeout is a string or empty. Now defaults to 0 and will be converted to a number. Bumped semantic release ([9e3953c](https://github.com/BowlingX/apollo-proxy-cache/commit/9e3953cac541934eb582373fbd96106a614ad7a5))
+* **timeout:** fixed an issue that timeout is a string or empty. Now defaults to 0 and will be converted to a number. Bumped semantic release ([0c3029d](https://github.com/BowlingX/apollo-proxy-cache/commit/0c3029d299b188a6554b7130e5ff1e2d91d9b23e))
+
 ## [5.0.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v5.0.0...v5.0.1) (2020-08-25)
 
 
