@@ -64,7 +64,7 @@ export const calculateArguments =
       throw new Error(`@${DIRECTIVE} directive requires a unique id.`)
     }
 
-    return { id: thisId, timeout, modifier }
+    return { id: thisId, timeout: Number(timeout || 0) || 0, modifier }
   }
 
 export const errorOnSet = (e: Object) => {
