@@ -23,6 +23,9 @@ export class RedisCache implements Cache<string, Object> {
   }
 
   set(key: string, value: Object, timeout: number): Promise<Cache<string, Object>> {
-    return this.client.set(key, JSON.stringify(value), 'EX', timeout)
+    if (timeout > 0) {
+      return this.client.set(key, JSON.stringify(value), 'EX', timeout)
+    }
+    return this.client.set(key, JSON.stringify(value))
   }
 }
