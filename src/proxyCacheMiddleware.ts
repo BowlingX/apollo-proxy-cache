@@ -52,6 +52,7 @@ export const proxyCacheMiddleware = <T extends Cache<string, any>>(
       } catch (e) {
         errorOnGet(e)
       }
+      // eslint-disable-next-line @typescript-eslint/no-extra-semi
       ;(req as RequestWithCache)._hasCache = { id, timeout }
       // could this be piped here (with req.pipe)
       req.body = { ...req.body, query: print(nextQuery) }
