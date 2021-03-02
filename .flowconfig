@@ -13,5 +13,6 @@
 
 [options]
 module.ignore_non_literal_requires=true
+sharedmemory.heap_size=3221225472
 
 [strict]
