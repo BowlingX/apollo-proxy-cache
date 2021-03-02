@@ -1,3 +1,20 @@
+# [6.0.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v5.0.3...v6.0.0) (2021-03-02)
+
+
+### Bug Fixes
+
+* **build:** fixed semis, added github plugin ([2b89572](https://github.com/BowlingX/apollo-proxy-cache/commit/2b895728a2f9e9d9a9cc5abf95158ac9852ebf43))
+
+
+### Features
+
+* **typescript:** migrated codebase to typescript, fixed possible memory leaks ([9e1cfe0](https://github.com/BowlingX/apollo-proxy-cache/commit/9e1cfe0fe2afa86bd82624dbc4dda6bc3fa9488d))
+
+
+### BREAKING CHANGES
+
+* **typescript:** This might cause flow errors as flow types are removed.
+
 ## [5.0.3](https://github.com/BowlingX/apollo-proxy-cache/compare/v5.0.2...v5.0.3) (2020-12-20)
 
 
