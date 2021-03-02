@@ -12,7 +12,7 @@ import type { Cache } from './caches/types'
 
 export const proxyCacheLink = <K extends string, V, T extends Cache<K, V>>(
   queryCache: T,
-  cacheKeyModifier: CacheKeyModifier
+  cacheKeyModifier?: CacheKeyModifier
 ) => {
   return new ApolloLink((operation, forward) => {
     const directives = 'directive @cache on QUERY'

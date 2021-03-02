@@ -19,7 +19,7 @@ type RequestWithCache = Request & { _hasCache: { id: string; timeout: number } }
 
 export const proxyCacheMiddleware = <T extends Cache<string, any>>(
   queryCache: T,
-  cacheKeyModifier: CacheKeyModifier
+  cacheKeyModifier?: CacheKeyModifier
 ) => (app: Application, endpoint: string, proxyConfig: Options) => {
   app.use(endpoint, async (req, response, next) => {
     if (!req.body) {
