@@ -1,3 +1,10 @@
+## [6.0.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v6.0.0...v6.0.1) (2021-03-02)
+
+
+### Bug Fixes
+
+* **types:** fixed types ([b92a693](https://github.com/BowlingX/apollo-proxy-cache/commit/b92a693c26f823663b6718a7e792aa16189bf207))
+
 # [6.0.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v5.0.3...v6.0.0) (2021-03-02)
 
 
