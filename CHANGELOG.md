@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.0.2...v4.1.0) (2021-03-03)
+
+
+### Features
+
+* **ts:** use latest master version with apollo 2.x compability. ([5853a1f](https://github.com/BowlingX/apollo-proxy-cache/commit/5853a1ff8177e367fe8dd6096aaee1c35f33edb3))
+
 ## [6.0.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v6.0.0...v6.0.1) (2021-03-02)
 
 
