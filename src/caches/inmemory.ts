@@ -1,18 +1,25 @@
 // @flow
 
-import { Cache } from './types'
 import { didTimeout } from '../utils-browser-only'
+import { Cache } from './types'
 
 // Simple in memory implementation using `Map`
 
-export class InMemoryCache implements Cache<string, Object> {
-  cache: Map<string, Object> = new Map()
+interface CachedData<T> {
+  data: T
+  time: number
+  timeout: number
+}
+
+export class InMemoryCache<K extends string = string, V = Record<string, any>>
+  implements Cache<K, V | null> {
+  cache: Map<string, CachedData<V>> = new Map()
 
   delete(key: string): Promise<boolean> {
     return Promise.resolve(this.cache.delete(key))
   }
 
-  get(key: string): Promise<?Object> {
+  get(key: string): Promise<V | null> {
     const possibleData = this.cache.get(key)
 
     if (!possibleData) {
@@ -27,7 +34,7 @@ export class InMemoryCache implements Cache<string, Object> {
     return Promise.resolve(data)
   }
 
-  set(key: string, value: Object, timeout: number): Promise<Cache<string, Object>> {
+  set(key: K, value: V, timeout: number): Promise<InMemoryCache<K, V>> {
     this.cache.set(key, { data: value, time: Number(new Date()), timeout })
     return Promise.resolve(this)
   }
