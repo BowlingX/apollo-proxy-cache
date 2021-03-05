@@ -1,3 +1,10 @@
+## [4.2.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.2.0...v4.2.1) (2021-03-05)
+
+
+### Bug Fixes
+
+* **node12:** bring back node 12 compatibility ([ad7b24e](https://github.com/BowlingX/apollo-proxy-cache/commit/ad7b24ef656c56ad18c511c1efdee70973d122af))
+
 # [4.2.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.1.1...v4.2.0) (2021-03-05)
 
 
