@@ -80,6 +80,11 @@
     "lodash": "^4.17.21"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=12"
+  },
+  "targets": {
+    "chrome": "58",
+    "ie": "11",
+    "node": "12"
   }
 }
