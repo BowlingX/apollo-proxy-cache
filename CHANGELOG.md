@@ -1,3 +1,10 @@
+# [4.2.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.1.1...v4.2.0) (2021-03-05)
+
+
+### Features
+
+* **browser:** create separate build for browser and nodejs ([cf4aeab](https://github.com/BowlingX/apollo-proxy-cache/commit/cf4aeab2c2277f5cb114ccf101bad73ccfeef13a))
+
 ## [4.1.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.1.0...v4.1.1) (2021-03-05)
 
 
