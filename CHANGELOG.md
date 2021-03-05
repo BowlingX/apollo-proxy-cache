@@ -1,3 +1,10 @@
+## [4.1.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.1.0...v4.1.1) (2021-03-05)
+
+
+### Bug Fixes
+
+* **ie11, node12:** fixed ie11 and node 12 support ([1b86533](https://github.com/BowlingX/apollo-proxy-cache/commit/1b86533b78e09a27a8413c5282f0998548338085))
+
 ## [6.0.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v6.0.0...v6.0.1) (2021-03-02)
 
 
