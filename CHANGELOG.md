@@ -1,3 +1,10 @@
+# [6.1.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v6.0.2...v6.1.0) (2021-03-05)
+
+
+### Features
+
+* **browser:** create separate build for browser and nodejs ([e6d737d](https://github.com/BowlingX/apollo-proxy-cache/commit/e6d737d870ecf9229559aaeb32434b1b59349173))
+
 ## [6.0.2](https://github.com/BowlingX/apollo-proxy-cache/compare/v6.0.1...v6.0.2) (2021-03-05)
 
 
