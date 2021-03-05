@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig",
   "compilerOptions": {
-    "outDir": "dist",
+    "outDir": "dist/node",
     "declaration": true,
     "declarationMap": true,
     "isolatedModules": false,

@@ -15,7 +15,7 @@ export function removeDirectivesFromQuery(
   const docClone = cloneDeep(doc)
   docClone.definitions.forEach((definition) => {
     if ((definition as OperationDefinitionNode).directives) {
-        // eslint-disable-next-line @typescript-eslint/no-extra-semi
+      // eslint-disable-next-line @typescript-eslint/no-extra-semi
       ;(definition as any).directives = (definition as OperationDefinitionNode).directives?.filter(
         (d) => d.name.value !== directive
       )
