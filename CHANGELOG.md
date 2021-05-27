@@ -1,3 +1,10 @@
+## [7.0.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v7.0.0...v7.0.1) (2021-05-27)
+
+
+### Bug Fixes
+
+* **api:** removed incompatible api parts ([68694b1](https://github.com/BowlingX/apollo-proxy-cache/commit/68694b16b9227eb341052ca35b75dbed7bdc983d))
+
 # [7.0.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v6.2.0...v7.0.0) (2021-05-27)
 
 
