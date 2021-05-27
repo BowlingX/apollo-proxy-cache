@@ -1,3 +1,10 @@
+## [7.0.2](https://github.com/BowlingX/apollo-proxy-cache/compare/v7.0.1...v7.0.2) (2021-05-27)
+
+
+### Bug Fixes
+
+* **api:** adjusted warn logic ([5001379](https://github.com/BowlingX/apollo-proxy-cache/commit/500137947a3f775f92009b77ad6c1cbef5b26bbb))
+
 ## [7.0.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v7.0.0...v7.0.1) (2021-05-27)
 
 
