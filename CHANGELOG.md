@@ -207,6 +207,157 @@
 
 * **timeout:** only timeout if > 0 ([41a6054](https://github.com/BowlingX/apollo-proxy-cache/commit/41a6054eda9ce3215df1152cda1dd6fda11aa660))
 
+## [4.2.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.2.0...v4.2.1) (2021-03-05)
+
+
+### Bug Fixes
+
+* **node12:** bring back node 12 compatibility ([ad7b24e](https://github.com/BowlingX/apollo-proxy-cache/commit/ad7b24ef656c56ad18c511c1efdee70973d122af))
+
+# [4.2.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.1.1...v4.2.0) (2021-03-05)
+
+
+### Features
+
+* **browser:** create separate build for browser and nodejs ([cf4aeab](https://github.com/BowlingX/apollo-proxy-cache/commit/cf4aeab2c2277f5cb114ccf101bad73ccfeef13a))
+
+## [4.1.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.1.0...v4.1.1) (2021-03-05)
+
+
+### Bug Fixes
+
+* **ie11, node12:** fixed ie11 and node 12 support ([1b86533](https://github.com/BowlingX/apollo-proxy-cache/commit/1b86533b78e09a27a8413c5282f0998548338085))
+
+## [6.0.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v6.0.0...v6.0.1) (2021-03-02)
+
+
+### Bug Fixes
+
+* **types:** fixed types ([b92a693](https://github.com/BowlingX/apollo-proxy-cache/commit/b92a693c26f823663b6718a7e792aa16189bf207))
+
+# [6.0.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v5.0.3...v6.0.0) (2021-03-02)
+
+
+### Bug Fixes
+
+* **build:** fixed semis, added github plugin ([2b89572](https://github.com/BowlingX/apollo-proxy-cache/commit/2b895728a2f9e9d9a9cc5abf95158ac9852ebf43))
+
+
+### Features
+
+* **typescript:** migrated codebase to typescript, fixed possible memory leaks ([9e1cfe0](https://github.com/BowlingX/apollo-proxy-cache/commit/9e1cfe0fe2afa86bd82624dbc4dda6bc3fa9488d))
+
+
+### BREAKING CHANGES
+
+* **typescript:** This might cause flow errors as flow types are removed.
+
+## [5.0.3](https://github.com/BowlingX/apollo-proxy-cache/compare/v5.0.2...v5.0.3) (2020-12-20)
+
+
+### Bug Fixes
+
+* **timeout:** only timeout if > 0 ([41a6054](https://github.com/BowlingX/apollo-proxy-cache/commit/41a6054eda9ce3215df1152cda1dd6fda11aa660))
+
+## [5.0.2](https://github.com/BowlingX/apollo-proxy-cache/compare/v5.0.1...v5.0.2) (2020-12-20)
+
+
+### Bug Fixes
+
+* **timeout:** fixed an issue that timeout is a string or empty. Now defaults to 0 and will be converted to a number. Bumped semantic release ([9e3953c](https://github.com/BowlingX/apollo-proxy-cache/commit/9e3953cac541934eb582373fbd96106a614ad7a5))
+* **timeout:** fixed an issue that timeout is a string or empty. Now defaults to 0 and will be converted to a number. Bumped semantic release ([0c3029d](https://github.com/BowlingX/apollo-proxy-cache/commit/0c3029d299b188a6554b7130e5ff1e2d91d9b23e))
+
+## [5.0.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v5.0.0...v5.0.1) (2020-08-25)
+
+
+### Bug Fixes
+
+* **apollo:** fixed import ([f26447b](https://github.com/BowlingX/apollo-proxy-cache/commit/f26447bbf07b2db298a86834d06b4d45f0836290))
+
+# [5.0.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.0.0...v5.0.0) (2020-08-25)
+
+
+### Bug Fixes
+
+* **apollo:** bumped apollo client to 3.x ([65de286](https://github.com/BowlingX/apollo-proxy-cache/commit/65de2867125bc3a5b708b081ec4bc1a500a2c863))
+
+
+### BREAKING CHANGES
+
+* **apollo:** Requires apollo client 3.x
+
+# [4.1.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.0.2...v4.1.0) (2021-03-03)
+
+
+### Features
+
+* **ts:** use latest master version with apollo 2.x compability. ([5853a1f](https://github.com/BowlingX/apollo-proxy-cache/commit/5853a1ff8177e367fe8dd6096aaee1c35f33edb3))
+
+## [6.0.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v6.0.0...v6.0.1) (2021-03-02)
+
+
+### Bug Fixes
+
+* **types:** fixed types ([b92a693](https://github.com/BowlingX/apollo-proxy-cache/commit/b92a693c26f823663b6718a7e792aa16189bf207))
+
+# [6.0.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v5.0.3...v6.0.0) (2021-03-02)
+
+
+### Bug Fixes
+
+* **build:** fixed semis, added github plugin ([2b89572](https://github.com/BowlingX/apollo-proxy-cache/commit/2b895728a2f9e9d9a9cc5abf95158ac9852ebf43))
+
+
+### Features
+
+* **typescript:** migrated codebase to typescript, fixed possible memory leaks ([9e1cfe0](https://github.com/BowlingX/apollo-proxy-cache/commit/9e1cfe0fe2afa86bd82624dbc4dda6bc3fa9488d))
+
+
+### BREAKING CHANGES
+
+* **typescript:** This might cause flow errors as flow types are removed.
+
+## [5.0.3](https://github.com/BowlingX/apollo-proxy-cache/compare/v5.0.2...v5.0.3) (2020-12-20)
+
+
+### Bug Fixes
+
+* **timeout:** only timeout if > 0 ([41a6054](https://github.com/BowlingX/apollo-proxy-cache/commit/41a6054eda9ce3215df1152cda1dd6fda11aa660))
+
+## [5.0.2](https://github.com/BowlingX/apollo-proxy-cache/compare/v5.0.1...v5.0.2) (2020-12-20)
+
+
+### Bug Fixes
+
+* **timeout:** fixed an issue that timeout is a string or empty. Now defaults to 0 and will be converted to a number. Bumped semantic release ([9e3953c](https://github.com/BowlingX/apollo-proxy-cache/commit/9e3953cac541934eb582373fbd96106a614ad7a5))
+* **timeout:** fixed an issue that timeout is a string or empty. Now defaults to 0 and will be converted to a number. Bumped semantic release ([0c3029d](https://github.com/BowlingX/apollo-proxy-cache/commit/0c3029d299b188a6554b7130e5ff1e2d91d9b23e))
+
+## [5.0.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v5.0.0...v5.0.1) (2020-08-25)
+
+
+### Bug Fixes
+
+* **apollo:** fixed import ([f26447b](https://github.com/BowlingX/apollo-proxy-cache/commit/f26447bbf07b2db298a86834d06b4d45f0836290))
+
+# [5.0.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.0.0...v5.0.0) (2020-08-25)
+
+
+### Bug Fixes
+
+* **apollo:** bumped apollo client to 3.x ([65de286](https://github.com/BowlingX/apollo-proxy-cache/commit/65de2867125bc3a5b708b081ec4bc1a500a2c863))
+
+
+### BREAKING CHANGES
+
+* **apollo:** Requires apollo client 3.x
+
+## [4.0.2](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.0.1...v4.0.2) (2020-12-20)
+
+
+### Bug Fixes
+
+* **timeout:** only timeout if > 0 ([41a6054](https://github.com/BowlingX/apollo-proxy-cache/commit/41a6054eda9ce3215df1152cda1dd6fda11aa660))
+
 ## [4.0.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.0.0...v4.0.1) (2020-12-20)
 
 
