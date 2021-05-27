@@ -23,7 +23,7 @@ export const createProxyCacheMiddleware = <T extends Cache<string, any>>(
 ) => (proxyConfig: Options) => {
 
   const directiveMiddleware = async (req: RequestWithCache, response: Response, next: NextFunction) => {
-    if (!req.body) {
+    if (!req.body && req.method === 'POST') {
       console.warn(
         '[skip] proxy-cache-middleware, request.body is not populated. Please add "body-parser" middleware (or similar).'
       ) // eslint-disable-line
