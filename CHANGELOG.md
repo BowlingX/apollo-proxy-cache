@@ -1,3 +1,15 @@
+# [7.0.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v6.2.0...v7.0.0) (2021-05-27)
+
+
+### Features
+
+* **request-handler:** Adjusted middleware to be compatible with non-express http implementations (e.g. nextjs http server) ([be4372a](https://github.com/BowlingX/apollo-proxy-cache/commit/be4372af1abece1893d4380c49b5a461a2432a4c))
+
+
+### BREAKING CHANGES
+
+* **request-handler:** API changed
+
 # [6.2.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v6.1.0...v6.2.0) (2021-05-27)
 
 
