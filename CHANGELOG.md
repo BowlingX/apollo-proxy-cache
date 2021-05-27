@@ -1,3 +1,11 @@
+## [4.2.2](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.2.1...v4.2.2) (2021-05-27)
+
+
+### Bug Fixes
+
+* **dep:** bumped dependencies ([3982067](https://github.com/BowlingX/apollo-proxy-cache/commit/3982067ab35c68f8491bab31f46336f73a1cb0d5))
+* **dep:** fixed dependencies ([ca694df](https://github.com/BowlingX/apollo-proxy-cache/commit/ca694dfc77be2b4f30e783efaf91f3ab68709d9d))
+
 ## [4.2.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.2.0...v4.2.1) (2021-03-05)
 
 
