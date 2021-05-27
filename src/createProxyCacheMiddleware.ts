@@ -65,7 +65,7 @@ export const createProxyCacheMiddleware = <T extends Cache<string, any>>(
     ...proxyConfig,
     onProxyReq: (proxyReq, req, res) => {
       let data
-      if (req.is('application/json')) {
+      if (req.body) {
         // We have to rewrite the request body due to body-parser's removal of the content.
         data = JSON.stringify(req.body)
         proxyReq.setHeader('Content-Length', Buffer.byteLength(data))
