@@ -1,3 +1,21 @@
+# [6.2.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v6.1.0...v6.2.0) (2021-05-27)
+
+
+### Bug Fixes
+
+* **dep:** bumped dependencies ([e3f7949](https://github.com/BowlingX/apollo-proxy-cache/commit/e3f7949bb80252e83a4123ed7cde32c5ab746c9a))
+* **dep:** bumped dependencies ([3982067](https://github.com/BowlingX/apollo-proxy-cache/commit/3982067ab35c68f8491bab31f46336f73a1cb0d5))
+* **dep:** bumped eslint plugins ([b10d0b3](https://github.com/BowlingX/apollo-proxy-cache/commit/b10d0b33b19d11d45af5b25c5e54d714ff070a70))
+* **dep:** fixed dependencies ([2dd906e](https://github.com/BowlingX/apollo-proxy-cache/commit/2dd906e1f726d7fee8c60c987d16a58b92cd3fe2))
+* **ie11, node12:** fixed ie11 and node 12 support ([1b86533](https://github.com/BowlingX/apollo-proxy-cache/commit/1b86533b78e09a27a8413c5282f0998548338085))
+* **node12:** bring back node 12 compatibility ([ad7b24e](https://github.com/BowlingX/apollo-proxy-cache/commit/ad7b24ef656c56ad18c511c1efdee70973d122af))
+
+
+### Features
+
+* **browser:** create separate build for browser and nodejs ([cf4aeab](https://github.com/BowlingX/apollo-proxy-cache/commit/cf4aeab2c2277f5cb114ccf101bad73ccfeef13a))
+* **ts:** use latest master version with apollo 2.x compability. ([5853a1f](https://github.com/BowlingX/apollo-proxy-cache/commit/5853a1ff8177e367fe8dd6096aaee1c35f33edb3))
+
 # [6.1.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v6.0.2...v6.1.0) (2021-03-05)
 
 
