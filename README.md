@@ -57,7 +57,7 @@ It will additionally remove the `@cache` directive and forward only the pure que
 There are no changes on your implementation required.
 
 ```js
-import { proxyCacheMiddleware, InMemoryCache } from 'apollo-proxy-cache'
+import { createProxyCacheMiddleware, InMemoryCache } from 'apollo-proxy-cache'
 import express from 'express'
 const queryCache = new InMemoryCache()
 import bodyParser from 'body-parser'
@@ -66,11 +66,14 @@ const proxyMiddlewareFactory = proxyCacheMiddleware(queryCache)
 
 const app = express()
 app.use(bodyParser.json()) // setup body-parser before (or anything else that populates request.body).
-proxyMiddlewareFactory(
-    app, 
-    '/graphql', /* the endpoint (will be proxied from localhost/graphql to target)*/
+const { directiveMiddleware, proxyMiddleware } = proxyMiddlewareFactory(
     { target: "http://graphql-server.com", changeOrigin: true } /* configuration object for http-proxy-middleware */
     )
+// directive middleware to remove directives and handle caching
+app.use( '/graphql', directiveMiddleware)
+
+// the proxy itself
+app.use( '/graphql', proxyMiddleware)
 ```
 
 

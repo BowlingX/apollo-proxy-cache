@@ -2,7 +2,7 @@ import { createProxyMiddleware, Options } from 'http-proxy-middleware'
 import { parse } from 'graphql'
 import { print } from 'graphql/language/printer'
 import { hasDirectives } from 'apollo-utilities'
-import type { Application, Request } from 'express'
+import type { Request, Response, NextFunction } from 'express'
 import { decode } from './utils'
 import type { Cache } from './caches/types'
 import {
@@ -17,11 +17,12 @@ const CACHE_HEADER = 'X-Proxy-Cached'
 
 type RequestWithCache = Request & { _hasCache: { id: string; timeout: number } }
 
-export const proxyCacheMiddleware = <T extends Cache<string, any>>(
+export const createProxyCacheMiddleware = <T extends Cache<string, any>>(
   queryCache: T,
   cacheKeyModifier?: CacheKeyModifier
-) => (app: Application, endpoint: string, proxyConfig: Options) => {
-  app.use(endpoint, async (req, response, next) => {
+) => (proxyConfig: Options) => {
+
+  const directiveMiddleware = async (req: RequestWithCache, response: Response, next: NextFunction) => {
     if (!req.body) {
       console.warn(
         '[skip] proxy-cache-middleware, request.body is not populated. Please add "body-parser" middleware (or similar).'
@@ -53,14 +54,14 @@ export const proxyCacheMiddleware = <T extends Cache<string, any>>(
         errorOnGet(e)
       }
       // eslint-disable-next-line @typescript-eslint/no-extra-semi
-      ;(req as RequestWithCache)._hasCache = { id, timeout }
+      req._hasCache = { id, timeout }
       // could this be piped here (with req.pipe)
       req.body = { ...req.body, query: print(nextQuery) }
     }
     next()
-  })
+  }
 
-  const proxyInstance = createProxyMiddleware({
+  const proxyMiddleware = createProxyMiddleware({
     ...proxyConfig,
     onProxyReq: (proxyReq, req, res) => {
       let data
@@ -96,6 +97,5 @@ export const proxyCacheMiddleware = <T extends Cache<string, any>>(
     },
   })
 
-  app.use(endpoint, proxyInstance)
-  return proxyInstance
+  return { proxyMiddleware, directiveMiddleware }
 }

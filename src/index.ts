@@ -1,5 +1,5 @@
 export { proxyCacheLink } from './proxyCacheLink'
-export { proxyCacheMiddleware } from './proxyCacheMiddleware'
+export { createProxyCacheMiddleware } from './createProxyCacheMiddleware'
 export { DIRECTIVE, removeCacheDirective } from './utils-browser-only'
 
 export { InMemoryCache } from './caches/inmemory'
