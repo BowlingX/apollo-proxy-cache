@@ -1,3 +1,10 @@
+## [7.0.3](https://github.com/BowlingX/apollo-proxy-cache/compare/v7.0.2...v7.0.3) (2021-05-27)
+
+
+### Bug Fixes
+
+* **error:** fixed error handling, fixed header ([2285303](https://github.com/BowlingX/apollo-proxy-cache/commit/22853037dd2a48bafd770ded6807082e206020d3))
+
 ## [7.0.2](https://github.com/BowlingX/apollo-proxy-cache/compare/v7.0.1...v7.0.2) (2021-05-27)
 
 
