@@ -1,3 +1,11 @@
+## [4.2.3](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.2.2...v4.2.3) (2021-06-01)
+
+
+### Bug Fixes
+
+* **formatting, crash:** fixed possible crashing when `[@cache](https://github.com/cache)` directive has missing arguments ([f22b7b2](https://github.com/BowlingX/apollo-proxy-cache/commit/f22b7b2f80145fb4896db996a1609fb62796b3c3))
+* **formatting, crash:** fixed possible crashing when `[@cache](https://github.com/cache)` directive has missing arguments ([427a596](https://github.com/BowlingX/apollo-proxy-cache/commit/427a596bcee9a451607dbf704d7467471b67e028))
+
 ## [4.2.2](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.2.1...v4.2.2) (2021-05-27)
 
 
