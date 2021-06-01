@@ -1,39 +1,23 @@
 import type {
   DocumentNode,
   ListValueNode,
-  OperationDefinitionNode,
   StringValueNode,
   DirectiveNode,
 } from 'graphql'
-import { checkDocument, cloneDeep } from 'apollo-utilities'
+import { removeDirectivesFromDocument } from 'apollo-utilities'
 import _get from 'lodash/get'
 
-export function removeDirectivesFromQuery(
-  doc: DocumentNode,
-  directive: string
-) {
-  const docClone = cloneDeep(doc)
-  docClone.definitions.forEach((definition) => {
-    if ((definition as OperationDefinitionNode).directives) {
-      // eslint-disable-next-line @typescript-eslint/no-extra-semi
-      ;(definition as any).directives = (
-        definition as OperationDefinitionNode
-      ).directives?.filter((d) => d.name.value !== directive)
-    }
-  })
-  return docClone
-}
-
-const removed = new Map()
+export const DIRECTIVE = 'cache'
 
 export function removeCacheDirective(query: DocumentNode): DocumentNode {
-  const cached = removed.get(query)
-  if (cached) return cached
-
-  checkDocument(query)
-  const docClone = removeDirectivesFromQuery(query, 'cache')
-  removed.set(query, docClone)
-  return docClone
+  return removeDirectivesFromDocument([
+    {
+      // if the directive should be removed
+      test: (directive?: DirectiveNode) => {
+        return directive?.name?.value === DIRECTIVE
+      },
+    }
+  ], query) as DocumentNode
 }
 
 type ValueValueNodes = StringValueNode
@@ -69,8 +53,6 @@ export function getDirectiveArgumentsAsObject<K>(
       }
     }, {}) as Directive<K>
 }
-
-export const DIRECTIVE = 'cache'
 
 export type CacheKeyModifier = <T>(
   key: string,
