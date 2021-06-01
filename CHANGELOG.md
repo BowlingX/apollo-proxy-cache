@@ -1,3 +1,10 @@
+## [7.0.4](https://github.com/BowlingX/apollo-proxy-cache/compare/v7.0.3...v7.0.4) (2021-06-01)
+
+
+### Bug Fixes
+
+* **leak:** fixed memory leak, removed global `deleted` cache; switched to build in removal functionality ([ac402b6](https://github.com/BowlingX/apollo-proxy-cache/commit/ac402b688296a5f2f25e5b606190e57770747f7e))
+
 ## [7.0.3](https://github.com/BowlingX/apollo-proxy-cache/compare/v7.0.2...v7.0.3) (2021-05-27)
 
 
