@@ -1,3 +1,10 @@
+## [7.0.5](https://github.com/BowlingX/apollo-proxy-cache/compare/v7.0.4...v7.0.5) (2021-06-01)
+
+
+### Bug Fixes
+
+* **formatting, crash:** fixed possible crashing when `[@cache](https://github.com/cache)` directive has missing arguments ([6671b5c](https://github.com/BowlingX/apollo-proxy-cache/commit/6671b5c06f8a186697ebfc2556c3397c4e6d12b6))
+
 ## [7.0.4](https://github.com/BowlingX/apollo-proxy-cache/compare/v7.0.3...v7.0.4) (2021-06-01)
 
 
