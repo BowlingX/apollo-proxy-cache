@@ -28,13 +28,25 @@ export const proxyCacheLink = <K extends string, V, T extends Cache<K, V>>(
 
     const server = removeCacheDirective(operation.query)
     const { query } = operation
-    if (server) operation.query = server
-    const { id, timeout } = calculateArguments<K>(
-      query,
-      operation.variables,
-      cacheKeyModifier,
-      operation.getContext()
-    )
+
+    if (server) {
+      operation.query = server
+    }
+
+    let id: K, timeout: number
+    try {
+      const { id: thisId, timeout: thisTimeout } = calculateArguments<K>(
+        query,
+        operation.variables,
+        cacheKeyModifier,
+        operation.getContext()
+      )
+      id = thisId
+      timeout = thisTimeout
+    } catch(e) {
+      errorOnGet(e)
+      return forward(operation)
+    }
     let subscriber: ZenObservable.Subscription
     return new Observable((observer) => {
       queryCache

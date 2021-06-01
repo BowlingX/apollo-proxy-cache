@@ -10,14 +10,17 @@ import _get from 'lodash/get'
 export const DIRECTIVE = 'cache'
 
 export function removeCacheDirective(query: DocumentNode): DocumentNode {
-  return removeDirectivesFromDocument([
-    {
-      // if the directive should be removed
-      test: (directive?: DirectiveNode) => {
-        return directive?.name?.value === DIRECTIVE
+  return removeDirectivesFromDocument(
+    [
+      {
+        // if the directive should be removed
+        test: (directive?: DirectiveNode) => {
+          return directive?.name?.value === DIRECTIVE
+        },
       },
-    }
-  ], query) as DocumentNode
+    ],
+    query
+  ) as DocumentNode
 }
 
 type ValueValueNodes = StringValueNode
