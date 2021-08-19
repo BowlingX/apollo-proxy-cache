@@ -1,3 +1,17 @@
+# [8.0.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v7.0.5...v8.0.0) (2021-08-19)
+
+
+### Bug Fixes
+
+* **brotli:** removed deprecated brotli `iltorb` compression usage ([c26b0e1](https://github.com/BowlingX/apollo-proxy-cache/commit/c26b0e13955ef1893eb9831fca8f7296440b4b2f))
+* **brotli:** removed deprecated brotli `iltorb` compression usage ([b8d9398](https://github.com/BowlingX/apollo-proxy-cache/commit/b8d939880126fe486952ba87632bb8a54ed30a0e))
+
+
+### BREAKING CHANGES
+
+* **brotli:** removed iltorb implementation, will break on earlier nodejs versions
+* **brotli:** removed iltorb implementation, will break on earlier nodejs versions
+
 ## [7.0.5](https://github.com/BowlingX/apollo-proxy-cache/compare/v7.0.4...v7.0.5) (2021-06-01)
 
 
