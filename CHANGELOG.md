@@ -1,3 +1,10 @@
+## [4.2.4](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.2.3...v4.2.4) (2021-12-01)
+
+
+### Bug Fixes
+
+* removed iltorb dependencies ([e76ec7c](https://github.com/BowlingX/apollo-proxy-cache/commit/e76ec7c10f8e270e53e5f07dbfd78b92f18bb625))
+
 ## [4.2.3](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.2.2...v4.2.3) (2021-06-01)
 
 
