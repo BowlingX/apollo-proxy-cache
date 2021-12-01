@@ -1,7 +1,6 @@
 import zlib from 'zlib'
 import type EventEmitter from 'events'
 import type { IncomingMessage } from 'http'
-import { decompressStream } from 'iltorb'
 
 export async function stream<T extends EventEmitter>(data: T) {
   const thisBuffer = [] as string[]
@@ -19,8 +18,6 @@ export async function stream<T extends EventEmitter>(data: T) {
   }) as Promise<string>
 }
 
-const supportsBrotli = typeof zlib.createBrotliDecompress === 'function'
-
 export async function decode(request: IncomingMessage) {
   const encoding = (request.headers['content-encoding'] || '')
     .trim()
@@ -31,12 +28,7 @@ export async function decode(request: IncomingMessage) {
   } else if (encoding === 'deflate') {
     decoder = zlib.createInflate()
   } else if (encoding === 'br') {
-    if (supportsBrotli) {
-      // $FlowFixMe: ignore, supported from node v11
-      decoder = zlib.createBrotliDecompress()
-    } else {
-      decoder = decompressStream()
-    }
+    decoder = zlib.createBrotliDecompress()
   }
 
   if (decoder) {
