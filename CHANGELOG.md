@@ -1,3 +1,10 @@
+## [8.0.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v8.0.0...v8.0.1) (2022-04-10)
+
+
+### Bug Fixes
+
+* brought back nodejs 12 compatibility; Bumped dependencies ([ff84764](https://github.com/BowlingX/apollo-proxy-cache/commit/ff847648dc4eb94d251b62f71e6aea7d9b58b2ae))
+
 # [8.0.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v7.0.5...v8.0.0) (2021-08-19)
 
 
