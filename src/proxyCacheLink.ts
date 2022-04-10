@@ -1,5 +1,6 @@
 import { ApolloLink, FetchResult, Observable } from '@apollo/client'
 import { hasDirectives } from 'apollo-utilities'
+import type { Subscription } from 'zen-observable-ts'
 import {
   calculateArguments,
   DIRECTIVE,
@@ -47,7 +48,7 @@ export const proxyCacheLink = <K extends string, V, T extends Cache<K, V>>(
       errorOnGet(e)
       return forward(operation)
     }
-    let subscriber: ZenObservable.Subscription
+    let subscriber: Subscription
     return new Observable((observer) => {
       queryCache
         .get(id)
