@@ -12,7 +12,8 @@ interface CachedData<T> {
 }
 
 export class InMemoryCache<K extends string = string, V = Record<string, any>>
-  implements Cache<K, V | null> {
+  implements Cache<K, V | null>
+{
   cache: Map<string, CachedData<V>> = new Map()
 
   delete(key: string): Promise<boolean> {

@@ -44,7 +44,7 @@ export const proxyCacheLink = <K extends string, V, T extends Cache<K, V>>(
       )
       id = thisId
       timeout = thisTimeout
-    } catch(e) {
+    } catch (e) {
       errorOnGet(e)
       return forward(operation)
     }

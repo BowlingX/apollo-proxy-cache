@@ -36,3 +36,9 @@ export async function decode(request: IncomingMessage) {
   }
   return await stream(request)
 }
+
+export const warnInDev = (message: string, error?: Error) => {
+  if (process.env.NODE_ENV !== 'production') {
+    console.warn(`[apollo-proxy-cache]: ${message}`, error)
+  }
+}

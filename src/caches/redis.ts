@@ -6,7 +6,8 @@ import { Cache } from './types'
 export class RedisCache<
   K extends KeyType = string,
   V = null | Record<string, any>
-> implements Cache<K, V | null> {
+> implements Cache<K, V | null>
+{
   client: Redis
 
   constructor(client: Redis) {
