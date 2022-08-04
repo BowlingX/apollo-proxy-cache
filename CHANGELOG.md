@@ -1,3 +1,10 @@
+## [4.2.5](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.2.4...v4.2.5) (2022-08-04)
+
+
+### Bug Fixes
+
+* fixed a problem in case a query cannot be parsed and the application would crash without further error handling. Log warnings only in development mode ([576f2b0](https://github.com/BowlingX/apollo-proxy-cache/commit/576f2b0ffa242a76778feed768cbf1218efe924a))
+
 ## [4.2.4](https://github.com/BowlingX/apollo-proxy-cache/compare/v4.2.3...v4.2.4) (2021-12-01)
 
 
