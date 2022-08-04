@@ -1,9 +1,9 @@
 import { createProxyMiddleware, Options } from 'http-proxy-middleware'
-import { parse } from 'graphql'
+import { DocumentNode, parse } from 'graphql'
 import { print } from 'graphql/language/printer'
 import { hasDirectives } from 'apollo-utilities'
 import type { Request, Response, NextFunction } from 'express'
-import { decode } from './utils'
+import { decode, warnInDev } from './utils'
 import type { Cache } from './caches/types'
 import {
   calculateArguments,
@@ -29,15 +29,21 @@ export const createProxyCacheMiddleware =
       next: NextFunction
     ) => {
       if (!req.body && req.method === 'POST') {
-        console.warn(
-          '[skip] proxy-cache-middleware, request.body is not populated. Please add "body-parser" middleware (or similar).'
+        warnInDev(
+          'skipping, request.body is not populated. Please add "body-parser" middleware (or similar).'
         ) // eslint-disable-line
         return next()
       }
       if (!req.body.query) {
         return next()
       }
-      const doc = parse(req.body.query)
+      let doc: DocumentNode
+      try {
+        doc = parse(req.body.query)
+      } catch (e) {
+        warnInDev(`skipping, unable to parse query`, e)
+        return next()
+      }
       const isCache = hasDirectives([DIRECTIVE], doc)
 
       // we remove the @cache directive if it exists
