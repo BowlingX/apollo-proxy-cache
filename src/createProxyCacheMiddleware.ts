@@ -74,7 +74,7 @@ export const createProxyCacheMiddleware =
 
     const proxyMiddleware = createProxyMiddleware({
       ...proxyConfig,
-      onProxyReq: (proxyReq, req, res) => {
+      onProxyReq: (proxyReq, req, res, options) => {
         let data
         if (req.body) {
           // We have to rewrite the request body due to body-parser's removal of the content.
@@ -82,7 +82,7 @@ export const createProxyCacheMiddleware =
           proxyReq.setHeader('Content-Length', Buffer.byteLength(data))
         }
         if (proxyConfig.onProxyReq) {
-          proxyConfig.onProxyReq(proxyReq, req, res)
+          proxyConfig.onProxyReq(proxyReq, req, res, options)
         }
         // We write the data at the end in case something get's manipulated before.
         if (data) {
