@@ -1,3 +1,10 @@
+## [8.0.3](https://github.com/BowlingX/apollo-proxy-cache/compare/v8.0.2...v8.0.3) (2022-11-23)
+
+
+### Bug Fixes
+
+* fixed forwarding missing `options` argument. Moved dependencies to peerDependencies ([27e5be1](https://github.com/BowlingX/apollo-proxy-cache/commit/27e5be13efa5be5eeb6572616b928392d79b1d53))
+
 ## [8.0.2](https://github.com/BowlingX/apollo-proxy-cache/compare/v8.0.1...v8.0.2) (2022-08-04)
 
 
