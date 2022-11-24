@@ -1,3 +1,10 @@
+## [8.0.4](https://github.com/BowlingX/apollo-proxy-cache/compare/v8.0.3...v8.0.4) (2022-11-24)
+
+
+### Bug Fixes
+
+* fixed invalid peer dependencies ([9e6d481](https://github.com/BowlingX/apollo-proxy-cache/commit/9e6d48106f48e228628bc8ac91a0720de7d18c36))
+
 ## [8.0.3](https://github.com/BowlingX/apollo-proxy-cache/compare/v8.0.2...v8.0.3) (2022-11-23)
 
 
