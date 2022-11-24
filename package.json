@@ -78,7 +78,7 @@
   },
   "peerDependencies": {
     "express": "^4",
-    "graphql": "^15|^14",
+    "graphql": ">=14",
     "@apollo/client": "^3",
     "apollo-utilities": "^1",
     "@babel/polyfill": "^7",
