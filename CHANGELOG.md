@@ -1,3 +1,10 @@
+## [8.0.5](https://github.com/BowlingX/apollo-proxy-cache/compare/v8.0.4...v8.0.5) (2023-01-24)
+
+
+### Bug Fixes
+
+* import from apollo core to remove react dependency ([5ad4327](https://github.com/BowlingX/apollo-proxy-cache/commit/5ad4327bafc4caa26d9f9a4273bef2d6c0956468))
+
 ## [8.0.4](https://github.com/BowlingX/apollo-proxy-cache/compare/v8.0.3...v8.0.4) (2022-11-24)
 
 
