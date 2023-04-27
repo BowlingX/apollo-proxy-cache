@@ -1,3 +1,10 @@
+# [8.1.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v8.0.5...v8.1.0) (2023-04-27)
+
+
+### Features
+
+* apply `json` body middleware if not applied ([997c29f](https://github.com/BowlingX/apollo-proxy-cache/commit/997c29f54d9c24c7394da13f0bf9e61d556c0c43))
+
 ## [8.0.5](https://github.com/BowlingX/apollo-proxy-cache/compare/v8.0.4...v8.0.5) (2023-01-24)
 
 
