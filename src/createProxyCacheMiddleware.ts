@@ -3,7 +3,7 @@ import { DocumentNode, parse } from 'graphql'
 import { print } from 'graphql/language/printer'
 import { hasDirectives } from 'apollo-utilities'
 import type { Request, Response, NextFunction, RequestHandler } from 'express'
-import express from 'express'
+import { json } from 'body-parser'
 import { decode, warnInDev } from './utils'
 import type { Cache } from './caches/types'
 import {
@@ -27,7 +27,7 @@ const middlewareToPromise =
     })
   }
 
-const jsonBodyParserPromise = middlewareToPromise(express.json())
+const jsonBodyParserPromise = middlewareToPromise(json())
 
 export const createProxyCacheMiddleware =
   <T extends Cache<string, any>>(

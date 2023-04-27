@@ -31,7 +31,6 @@
     "@semantic-release/npm": "^7.0.9",
     "@semantic-release/release-notes-generator": "^9.0.1",
     "babel-eslint": "^10.1.0",
-    "body-parser": "^1.19.0",
     "eslint": "^7.21.0",
     "@typescript-eslint/parser": "^4.25.0",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
@@ -91,7 +90,9 @@
     "yargs": "^13.1.2",
     "ssri": "^8.0.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "body-parser": "^1.20.2"
+  },
   "engines": {
     "node": ">=12"
   }
