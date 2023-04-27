@@ -1,4 +1,4 @@
-import { createProxyMiddleware, Options } from 'http-proxy-middleware'
+import { createProxyMiddleware, fixRequestBody, Options } from 'http-proxy-middleware'
 import { DocumentNode, parse } from 'graphql'
 import { print } from 'graphql/language/printer'
 import { hasDirectives } from 'apollo-utilities'
@@ -83,21 +83,7 @@ export const createProxyCacheMiddleware =
 
     const proxyMiddleware = createProxyMiddleware({
       ...proxyConfig,
-      onProxyReq: (proxyReq, req, res, options) => {
-        let data
-        if (req.body) {
-          // We have to rewrite the request body due to body-parser's removal of the content.
-          data = JSON.stringify(req.body)
-          proxyReq.setHeader('Content-Length', Buffer.byteLength(data))
-        }
-        if (proxyConfig.onProxyReq) {
-          proxyConfig.onProxyReq(proxyReq, req, res, options)
-        }
-        // We write the data at the end in case something get's manipulated before.
-        if (data) {
-          proxyReq.write(data)
-        }
-      },
+      onProxyReq: fixRequestBody,
       onProxyRes: async (proxyRes, req, res) => {
         if ((req as RequestWithCache)._hasCache) {
           const { id, timeout } = (req as RequestWithCache)._hasCache
