@@ -1,3 +1,10 @@
+## [8.1.2](https://github.com/BowlingX/apollo-proxy-cache/compare/v8.1.1...v8.1.2) (2023-04-27)
+
+
+### Bug Fixes
+
+* fixed np on others then `POST` requests ([8d165bc](https://github.com/BowlingX/apollo-proxy-cache/commit/8d165bc230596f377163172bf25ea686442e7c73))
+
 ## [8.1.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v8.1.0...v8.1.1) (2023-04-27)
 
 
