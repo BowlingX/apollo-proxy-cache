@@ -1,3 +1,10 @@
+## [8.1.3](https://github.com/BowlingX/apollo-proxy-cache/compare/v8.1.2...v8.1.3) (2023-04-27)
+
+
+### Bug Fixes
+
+* use build-in `fixRequestBody` ([2d83649](https://github.com/BowlingX/apollo-proxy-cache/commit/2d8364977aaedeaa7d94d7a249dd43326730fd1c))
+
 ## [8.1.2](https://github.com/BowlingX/apollo-proxy-cache/compare/v8.1.1...v8.1.2) (2023-04-27)
 
 
