@@ -1,3 +1,10 @@
+## [8.1.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v8.1.0...v8.1.1) (2023-04-27)
+
+
+### Bug Fixes
+
+* do not depend on express, use `body-parser` instead ([8ed4f80](https://github.com/BowlingX/apollo-proxy-cache/commit/8ed4f80be5513bae590877e366daa7af0c6e7f4f))
+
 # [8.1.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v8.0.5...v8.1.0) (2023-04-27)
 
 
