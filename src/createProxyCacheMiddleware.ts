@@ -2,7 +2,8 @@ import { createProxyMiddleware, Options } from 'http-proxy-middleware'
 import { DocumentNode, parse } from 'graphql'
 import { print } from 'graphql/language/printer'
 import { hasDirectives } from 'apollo-utilities'
-import type { Request, Response, NextFunction } from 'express'
+import type { Request, Response, NextFunction, RequestHandler } from 'express'
+import express from 'express'
 import { decode, warnInDev } from './utils'
 import type { Cache } from './caches/types'
 import {
@@ -17,6 +18,17 @@ const CACHE_HEADER = 'X-Proxy-Cached'
 
 type RequestWithCache = Request & { _hasCache: { id: string; timeout: number } }
 
+const middlewareToPromise =
+  (middleware: RequestHandler) =>
+  (req: Parameters<RequestHandler>[0], res: Parameters<RequestHandler>[1]) => {
+    return new Promise<ReturnType<RequestHandler>>((resolve, reject) => {
+      const next = (x: unknown) => (x ? reject(x) : resolve())
+      middleware(req, res, next)
+    })
+  }
+
+const jsonBodyParserPromise = middlewareToPromise(express.json())
+
 export const createProxyCacheMiddleware =
   <T extends Cache<string, any>>(
     queryCache: T,
@@ -29,10 +41,7 @@ export const createProxyCacheMiddleware =
       next: NextFunction
     ) => {
       if (!req.body && req.method === 'POST') {
-        warnInDev(
-          'skipping, request.body is not populated. Please add "body-parser" middleware (or similar).'
-        ) // eslint-disable-line
-        return next()
+        await jsonBodyParserPromise(req, response)
       }
       if (!req.body.query) {
         return next()
