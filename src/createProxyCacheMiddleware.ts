@@ -43,12 +43,12 @@ export const createProxyCacheMiddleware =
       if (!req.body && req.method === 'POST') {
         await jsonBodyParserPromise(req, response)
       }
-      if (!req.body.query) {
+      if (!req.body?.query) {
         return next()
       }
       let doc: DocumentNode
       try {
-        doc = parse(req.body.query)
+        doc = parse(req.body?.query)
       } catch (e) {
         warnInDev(`skipping, unable to parse query`, e)
         return next()
