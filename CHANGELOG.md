@@ -1,3 +1,15 @@
+# [9.0.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v8.1.3...v9.0.0) (2024-05-29)
+
+
+### Features
+
+* Switch to official `redis` package instead `ioredis`, adjusted build pipelines ([d476f48](https://github.com/BowlingX/apollo-proxy-cache/commit/d476f48d4bf700649eda5421a1f3ccc1e34252a4))
+
+
+### BREAKING CHANGES
+
+* Switch to official `redis` package instead `ioredis` for default redis implementation.
+
 ## [8.1.3](https://github.com/BowlingX/apollo-proxy-cache/compare/v8.1.2...v8.1.3) (2023-04-27)
 
 
