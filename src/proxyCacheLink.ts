@@ -8,18 +8,17 @@ import {
   errorOnSet,
   removeCacheDirective,
   CacheKeyModifier,
-} from './utils-browser-only'
-import type { Cache } from './caches/types'
+} from './utils-browser-only.js'
+import type { Cache } from './caches/types.js'
 
 export const proxyCacheLink = <K extends string, V, T extends Cache<K, V>>(
   queryCache: T,
-  cacheKeyModifier?: CacheKeyModifier
+  cacheKeyModifier?: CacheKeyModifier,
 ) => {
   return new ApolloLink((operation, forward) => {
     const directives = 'directive @cache on QUERY'
     operation.setContext(({ schemas = [] }) => ({
-      // FIXME: not sure why this gives an error
-      // @ts-ignore
+      // @ts-expect-error schemas is never
       schemas: schemas.concat([{ directives }]),
     }))
 
@@ -40,12 +39,12 @@ export const proxyCacheLink = <K extends string, V, T extends Cache<K, V>>(
         query,
         operation.variables,
         cacheKeyModifier,
-        operation.getContext()
+        operation.getContext(),
       )
       id = thisId
       timeout = thisTimeout
     } catch (e) {
-      errorOnGet(e)
+      errorOnGet(e as Error)
       return forward(operation)
     }
     let subscriber: Subscription
@@ -76,6 +75,7 @@ export const proxyCacheLink = <K extends string, V, T extends Cache<K, V>>(
             error: observer.error.bind(observer),
             complete: observer.complete.bind(observer),
           })
+          return data
         })
         .catch(errorOnGet)
       return () => {

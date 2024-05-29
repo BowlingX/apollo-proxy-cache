@@ -1,11 +1,14 @@
-import { createProxyMiddleware, fixRequestBody, Options } from 'http-proxy-middleware'
-import { DocumentNode, parse } from 'graphql'
-import { print } from 'graphql/language/printer'
+import {
+  createProxyMiddleware,
+  fixRequestBody,
+  Options,
+} from 'http-proxy-middleware'
+import { DocumentNode, parse, print } from 'graphql'
 import { hasDirectives } from 'apollo-utilities'
 import type { Request, Response, NextFunction, RequestHandler } from 'express'
 import { json } from 'body-parser'
-import { decode, warnInDev } from './utils'
-import type { Cache } from './caches/types'
+import { decode, warnInDev } from './utils.js'
+import type { Cache } from './caches/types.js'
 import {
   calculateArguments,
   DIRECTIVE,
@@ -13,7 +16,7 @@ import {
   errorOnGet,
   errorOnSet,
   CacheKeyModifier,
-} from './utils-browser-only'
+} from './utils-browser-only.js'
 const CACHE_HEADER = 'X-Proxy-Cached'
 
 type RequestWithCache = Request & { _hasCache: { id: string; timeout: number } }
@@ -32,13 +35,13 @@ const jsonBodyParserPromise = middlewareToPromise(json())
 export const createProxyCacheMiddleware =
   <T extends Cache<string, any>>(
     queryCache: T,
-    cacheKeyModifier?: CacheKeyModifier
+    cacheKeyModifier?: CacheKeyModifier,
   ) =>
   (proxyConfig: Options) => {
     const directiveMiddleware = async (
       req: RequestWithCache,
       response: Response,
-      next: NextFunction
+      next: NextFunction,
     ) => {
       if (!req.body && req.method === 'POST') {
         await jsonBodyParserPromise(req, response)
@@ -50,7 +53,7 @@ export const createProxyCacheMiddleware =
       try {
         doc = parse(req.body?.query)
       } catch (e) {
-        warnInDev(`skipping, unable to parse query`, e)
+        warnInDev(`skipping, unable to parse query`, e as Error)
         return next()
       }
       const isCache = hasDirectives([DIRECTIVE], doc)
@@ -63,7 +66,7 @@ export const createProxyCacheMiddleware =
             doc,
             req.body.variables,
             cacheKeyModifier,
-            req
+            req,
           )
           const possibleData = await queryCache.get(id)
           if (possibleData) {
@@ -75,7 +78,7 @@ export const createProxyCacheMiddleware =
           // could this be piped here (with req.pipe)
           req.body = { ...req.body, query: print(nextQuery) }
         } catch (e) {
-          errorOnGet(e)
+          errorOnGet(e as Error)
         }
       }
       next()
@@ -94,7 +97,7 @@ export const createProxyCacheMiddleware =
               await queryCache.set(id, response.data, timeout)
             }
           } catch (e) {
-            errorOnSet(e)
+            errorOnSet(e as Error)
           }
         }
         if (proxyConfig.onProxyRes) {

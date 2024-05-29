@@ -1,7 +1,5 @@
-// @flow
-
-import { didTimeout } from '../utils-browser-only'
-import { Cache } from './types'
+import { didTimeout } from '../utils-browser-only.js'
+import { Cache } from './types.js'
 
 // Simple in memory implementation using `Map`
 

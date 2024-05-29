@@ -1,25 +1,21 @@
-// @flow
+import type { RedisClientType } from 'redis'
+import { Cache } from './types.js'
 
-import type { Redis, KeyType } from 'ioredis'
-import { Cache } from './types'
-
-export class RedisCache<
-  K extends KeyType = string,
-  V = null | Record<string, any>
-> implements Cache<K, V | null>
+export class RedisCache<V = null | Record<string, any>>
+  implements Cache<string, V | null>
 {
-  client: Redis
+  client: RedisClientType
 
-  constructor(client: Redis) {
+  constructor(client: RedisClientType) {
     this.client = client
   }
 
-  async delete(key: K): Promise<boolean> {
+  async delete(key: string): Promise<boolean> {
     const result = await this.client.del(key)
     return result === 1
   }
 
-  async get(key: K): Promise<V | null> {
+  async get(key: string): Promise<V | null> {
     const result = await this.client.get(key)
     if (result) {
       return JSON.parse(result.toString())
@@ -27,9 +23,11 @@ export class RedisCache<
     return null
   }
 
-  async set(key: K, value: V, timeout: number): Promise<RedisCache<K, V>> {
+  async set(key: string, value: V, timeout: number) {
     if (timeout > 0) {
-      await this.client.set(key, JSON.stringify(value), 'EX', timeout)
+      await this.client.set(key, JSON.stringify(value), {
+        EX: timeout,
+      })
       return this
     }
     await this.client.set(key, JSON.stringify(value))

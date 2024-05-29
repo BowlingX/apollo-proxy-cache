@@ -2,5 +2,5 @@ node_modules/
 .idea/
 *.iml
 yarn-error.log
-dist/
+build/
 

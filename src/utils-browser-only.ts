@@ -3,9 +3,10 @@ import type {
   ListValueNode,
   StringValueNode,
   DirectiveNode,
+  OperationDefinitionNode,
 } from 'graphql'
 import { removeDirectivesFromDocument } from 'apollo-utilities'
-import _get from 'lodash/get'
+import _ from 'lodash'
 
 export const DIRECTIVE = 'cache'
 
@@ -19,7 +20,7 @@ export function removeCacheDirective(query: DocumentNode): DocumentNode {
         },
       },
     ],
-    query
+    query,
   ) as DocumentNode
 }
 
@@ -33,9 +34,9 @@ type Directive<K> = {
 
 export function getDirectiveArgumentsAsObject<K>(
   doc: DocumentNode,
-  directive: string
+  directive: string,
 ) {
-  return _get(doc.definitions, '0.directives', [])
+  return ((doc.definitions?.[0] as OperationDefinitionNode)?.directives || [])
     .filter((v: DirectiveNode) => v.name.value === directive)
     .reduce((next: Record<string, string[] | string>, v: DirectiveNode) => {
       return {
@@ -45,12 +46,12 @@ export function getDirectiveArgumentsAsObject<K>(
               (v.value as ValueValueNodes).value ||
               ((v.value as ListValueNode).values
                 ? (v.value as ListValueNode).values?.map(
-                    (v) => (v as ValueValueNodes).value
+                    (v) => (v as ValueValueNodes).value,
                   )
                 : undefined),
             ...next,
           }),
-          {}
+          {},
         ),
         ...next,
       }
@@ -60,7 +61,7 @@ export function getDirectiveArgumentsAsObject<K>(
 export type CacheKeyModifier = <T>(
   key: string,
   variables?: Record<string, any>,
-  context?: T
+  context?: T,
 ) => string
 
 export const didTimeout = (timeout: number, time: number) =>
@@ -70,15 +71,15 @@ export const calculateArguments = <K extends string, T = Record<string, any>>(
   query: DocumentNode,
   variables?: Record<string, any>,
   cacheKeyModifier?: CacheKeyModifier,
-  context?: T
+  context?: T,
 ) => {
   const { id, timeout, modifier } = getDirectiveArgumentsAsObject<K>(
     query,
-    DIRECTIVE
+    DIRECTIVE,
   )
   let thisId = modifier
     ? modifier.reduce((next, path) => {
-        return `${next}.${_get(variables, path, '')}`
+        return `${next}.${_.get(variables, path, '')}`
       }, id)
     : id
 
