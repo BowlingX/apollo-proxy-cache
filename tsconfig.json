@@ -24,7 +24,7 @@
     "pretty": true /* Stylize errors and messages using color and context. */,
 
     "lib": ["ES2022"],
-    "types": ["node"]
+    "types": []
   },
   "include": ["src/**/*"],
   "compileOnSave": false
