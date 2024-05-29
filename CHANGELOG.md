@@ -1,3 +1,10 @@
+## [9.0.4](https://github.com/BowlingX/apollo-proxy-cache/compare/v9.0.3...v9.0.4) (2024-05-29)
+
+
+### Bug Fixes
+
+* Do not bundle as esm but just to be bundled ([4da863c](https://github.com/BowlingX/apollo-proxy-cache/commit/4da863c2066a76e33ff51029ed990238264c32a7))
+
 ## [9.0.3](https://github.com/BowlingX/apollo-proxy-cache/compare/v9.0.2...v9.0.3) (2024-05-29)
 
 
