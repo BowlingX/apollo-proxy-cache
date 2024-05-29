@@ -14,13 +14,12 @@ module.exports = {
     'plugin:@typescript-eslint/recommended'
   ],
   rules: {
-    // FIXME: Currently reports differently on osx and linux
-    /*'import/order': ['error', {
+    'import/order': ['error', {
       "alphabetize": {
         "order": "asc",
         "caseInsensitive": true
       },
-      groups: ['builtin', 'external', 'parent', 'sibling', 'index'] }],*/
+      groups: ['builtin', 'external', 'parent', 'sibling', 'index'] }],
     '@typescript-eslint/member-delimiter-style': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
