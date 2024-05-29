@@ -1,4 +1,4 @@
-import { ApolloLink, FetchResult, Observable } from '@apollo/client'
+import * as apollo from '@apollo/client'
 import { hasDirectives } from 'apollo-utilities'
 import type { Subscription } from 'zen-observable-ts'
 import type { Cache } from './caches/types.js'
@@ -15,7 +15,7 @@ export const proxyCacheLink = <K extends string, V, T extends Cache<K, V>>(
   queryCache: T,
   cacheKeyModifier?: CacheKeyModifier,
 ) => {
-  return new ApolloLink((operation, forward) => {
+  return new apollo.ApolloLink((operation, forward) => {
     const directives = 'directive @cache on QUERY'
     operation.setContext(({ schemas = [] }) => ({
       // @ts-expect-error schemas is never
@@ -48,7 +48,7 @@ export const proxyCacheLink = <K extends string, V, T extends Cache<K, V>>(
       return forward(operation)
     }
     let subscriber: Subscription
-    return new Observable((observer) => {
+    return new apollo.Observable((observer) => {
       queryCache
         .get(id)
         .then((data) => {
@@ -57,9 +57,9 @@ export const proxyCacheLink = <K extends string, V, T extends Cache<K, V>>(
             observer.complete()
             return data
           }
-          const obs: Observable<FetchResult> = server
+          const obs: apollo.Observable<apollo.FetchResult> = server
             ? forward(operation)
-            : Observable.of({
+            : apollo.Observable.of({
                 data: {},
               })
           subscriber = obs.subscribe({
