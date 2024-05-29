@@ -2,16 +2,15 @@
   "name": "apollo-proxy-cache",
   "version": "9.0.3",
   "description": "Provides an apollo-link and express (proxy) middleware setup to support a local `@cache` directive",
-  "main": "build/cjs/index.js",
-  "typings": "build/mjs/index.d.ts",
-  "module": "build/mjs/index.js",
+  "main": "build/module/index.js",
+  "typings": "build/module/index.d.ts",
+  "module": "build/module/index.js",
   "repository": "git@github.com:BowlingX/apollo-proxy-cache.git",
   "author": "David Heidrich <me@bowlingx.com>",
   "license": "MIT",
   "files": [
     "build/"
   ],
-  "type": "module",
   "devDependencies": {
     "@apollo/client": "^3.10.4",
     "@semantic-release/changelog": "^6.0.3",
@@ -42,7 +41,7 @@
   },
   "scripts": {
     "prepack": "yarn build",
-    "build": "yarn run build:main && yarn run build:cjs && sh ./esm-postbuild.sh",
+    "build": "yarn run build:main",
     "build:main": "tsc -p tsconfig.json",
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:types": "tsc --project tsconfig.types.json",
@@ -52,12 +51,8 @@
   "exports": {
     ".": {
       "import": {
-        "types": "./build/mjs/index.d.ts",
-        "default": "./build/mjs/index.js"
-      },
-      "require": {
-        "types": "./build/cjs/index.d.ts",
-        "default": "./build/cjs/index.js"
+        "types": "./build/module/index.d.ts",
+        "default": "./build/module/index.js"
       }
     }
   },

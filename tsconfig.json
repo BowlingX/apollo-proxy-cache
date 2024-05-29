@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "target": "ES2022",
-    "outDir": "build/mjs",
-    "module": "Node16",
+    "outDir": "build/module",
+    "module": "ES2022",
     "rootDir": "src",
-    "moduleResolution": "node16",
+    "moduleResolution": "bundler",
     "skipLibCheck": true,
     "declaration": true,
     "inlineSourceMap": false,
