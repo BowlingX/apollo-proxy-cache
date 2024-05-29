@@ -1,4 +1,4 @@
-import { ApolloLink, FetchResult, Observable } from '@apollo/client/core'
+import { ApolloLink, FetchResult, Observable } from '@apollo/client'
 import { hasDirectives } from 'apollo-utilities'
 import type { Subscription } from 'zen-observable-ts'
 import type { Cache } from './caches/types.js'
