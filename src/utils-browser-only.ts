@@ -1,3 +1,4 @@
+import { removeDirectivesFromDocument } from 'apollo-utilities'
 import type {
   DocumentNode,
   ListValueNode,
@@ -5,7 +6,6 @@ import type {
   DirectiveNode,
   OperationDefinitionNode,
 } from 'graphql'
-import { removeDirectivesFromDocument } from 'apollo-utilities'
 import _ from 'lodash'
 
 export const DIRECTIVE = 'cache'

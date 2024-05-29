@@ -1,6 +1,6 @@
-import zlib from 'zlib'
 import type EventEmitter from 'events'
 import type { IncomingMessage } from 'http'
+import zlib from 'zlib'
 
 export async function stream<T extends EventEmitter>(data: T) {
   const thisBuffer = [] as string[]

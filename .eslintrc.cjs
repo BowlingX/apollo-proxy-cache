@@ -14,7 +14,11 @@ module.exports = {
     'plugin:@typescript-eslint/recommended'
   ],
   rules: {
-    'import/order': ['error', { groups: ['builtin', 'external', 'parent', 'sibling', 'index'] }],
+    'import/order': ['error', {
+      "alphabetize": {
+        "order": "asc"
+      },
+      groups: ['builtin', 'external', 'parent', 'sibling', 'index'] }],
     '@typescript-eslint/member-delimiter-style': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',

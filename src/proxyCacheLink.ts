@@ -1,6 +1,7 @@
 import { ApolloLink, FetchResult, Observable } from '@apollo/client/core'
 import { hasDirectives } from 'apollo-utilities'
 import type { Subscription } from 'zen-observable-ts'
+import type { Cache } from './caches/types.js'
 import {
   calculateArguments,
   DIRECTIVE,
@@ -9,7 +10,6 @@ import {
   removeCacheDirective,
   CacheKeyModifier,
 } from './utils-browser-only.js'
-import type { Cache } from './caches/types.js'
 
 export const proxyCacheLink = <K extends string, V, T extends Cache<K, V>>(
   queryCache: T,

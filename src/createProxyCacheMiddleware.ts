@@ -1,13 +1,12 @@
+import { hasDirectives } from 'apollo-utilities'
+import { json } from 'body-parser'
+import type { Request, Response, NextFunction, RequestHandler } from 'express'
+import { DocumentNode, parse, print } from 'graphql'
 import {
   createProxyMiddleware,
   fixRequestBody,
   Options,
 } from 'http-proxy-middleware'
-import { DocumentNode, parse, print } from 'graphql'
-import { hasDirectives } from 'apollo-utilities'
-import type { Request, Response, NextFunction, RequestHandler } from 'express'
-import { json } from 'body-parser'
-import { decode, warnInDev } from './utils.js'
 import type { Cache } from './caches/types.js'
 import {
   calculateArguments,
@@ -17,6 +16,7 @@ import {
   errorOnSet,
   CacheKeyModifier,
 } from './utils-browser-only.js'
+import { decode, warnInDev } from './utils.js'
 const CACHE_HEADER = 'X-Proxy-Cached'
 
 type RequestWithCache = Request & { _hasCache: { id: string; timeout: number } }
