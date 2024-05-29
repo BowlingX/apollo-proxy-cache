@@ -16,7 +16,8 @@ module.exports = {
   rules: {
     'import/order': ['error', {
       "alphabetize": {
-        "order": "asc"
+        "order": "asc",
+        "caseInsensitive": true
       },
       groups: ['builtin', 'external', 'parent', 'sibling', 'index'] }],
     '@typescript-eslint/member-delimiter-style': 'off',
