@@ -20,7 +20,7 @@ jobs:
         - v4-dependencies-
 
     - run: sudo corepack enable
-    - run: yarn install
+    - run: yarn install --immutable
 
     - save_cache:
         paths:

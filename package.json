@@ -45,7 +45,7 @@
     "build:main": "tsc -p tsconfig.json",
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:types": "tsc --project tsconfig.types.json",
-    "test": "yarn eslint src && tsc",
+    "test": "yarn eslint ./src && tsc",
     "prettify": "prettier \"./src/**/*.{ts,tsx}\" --write"
   },
   "exports": {
