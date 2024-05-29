@@ -1,3 +1,10 @@
+## [9.0.2](https://github.com/BowlingX/apollo-proxy-cache/compare/v9.0.1...v9.0.2) (2024-05-29)
+
+
+### Bug Fixes
+
+* fixed es imports ([53066f3](https://github.com/BowlingX/apollo-proxy-cache/commit/53066f3b3406d059a1c86f46f985603dda0268e1))
+
 ## [9.0.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v9.0.0...v9.0.1) (2024-05-29)
 
 
