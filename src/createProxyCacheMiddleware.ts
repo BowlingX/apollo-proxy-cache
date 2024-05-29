@@ -1,5 +1,5 @@
 import { hasDirectives } from 'apollo-utilities'
-import * as bp from 'body-parser'
+import bp from 'body-parser'
 import type { Request, Response, NextFunction, RequestHandler } from 'express'
 import { DocumentNode, parse, print } from 'graphql'
 import {
@@ -21,6 +21,8 @@ const CACHE_HEADER = 'X-Proxy-Cached'
 
 type RequestWithCache = Request & { _hasCache: { id: string; timeout: number } }
 
+const { json } = bp
+
 const middlewareToPromise =
   (middleware: RequestHandler) =>
   (req: Parameters<RequestHandler>[0], res: Parameters<RequestHandler>[1]) => {
@@ -30,7 +32,7 @@ const middlewareToPromise =
     })
   }
 
-const jsonBodyParserPromise = middlewareToPromise(bp.json())
+const jsonBodyParserPromise = middlewareToPromise(json())
 
 export const createProxyCacheMiddleware =
   <T extends Cache<string, any>>(
