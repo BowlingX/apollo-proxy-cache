@@ -1,3 +1,10 @@
+## [9.0.5](https://github.com/BowlingX/apollo-proxy-cache/compare/v9.0.4...v9.0.5) (2024-12-06)
+
+
+### Bug Fixes
+
+* bumped dependencies ([8f67938](https://github.com/BowlingX/apollo-proxy-cache/commit/8f679380b472229ff0262bb27b2cc5a23958886c))
+
 ## [9.0.4](https://github.com/BowlingX/apollo-proxy-cache/compare/v9.0.3...v9.0.4) (2024-05-29)
 
 

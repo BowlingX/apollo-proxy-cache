@@ -1,6 +1,6 @@
 {
   "name": "apollo-proxy-cache",
-  "version": "9.0.4",
+  "version": "9.0.5",
   "description": "Provides an apollo-link and express (proxy) middleware setup to support a local `@cache` directive",
   "main": "build/module/index.js",
   "typings": "build/module/index.d.ts",
