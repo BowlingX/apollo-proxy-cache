@@ -1,3 +1,10 @@
+## [9.0.6](https://github.com/BowlingX/apollo-proxy-cache/compare/v9.0.5...v9.0.6) (2025-03-07)
+
+
+### Bug Fixes
+
+* bumped dependencies, export link and in-memory cache for browser only usage ([aa84854](https://github.com/BowlingX/apollo-proxy-cache/commit/aa8485401620f5be37f1d62687e4a421051b1237))
+
 ## [9.0.5](https://github.com/BowlingX/apollo-proxy-cache/compare/v9.0.4...v9.0.5) (2024-12-06)
 
 
