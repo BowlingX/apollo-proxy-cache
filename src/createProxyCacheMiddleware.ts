@@ -70,8 +70,6 @@ export const createProxyCacheMiddleware =
           )
           req._hasCache = { id, timeout }
 
-          // eslint-disable-next-line @typescript-eslint/no-extra-semi
-          // could this be piped here (with req.pipe)
           req.body = { ...req.body, query: print(nextQuery) }
 
           const possibleData = await queryCache.get(id)
