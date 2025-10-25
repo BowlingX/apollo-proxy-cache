@@ -1,3 +1,15 @@
+# [10.0.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v9.0.8...v10.0.0) (2025-10-25)
+
+
+### Bug Fixes
+
+* bumped redis version ([c9d43a1](https://github.com/BowlingX/apollo-proxy-cache/commit/c9d43a14f806a783a459d13385ad3d1b39b7a032))
+
+
+### BREAKING CHANGES
+
+* Bumped major redis version
+
 ## [9.0.8](https://github.com/BowlingX/apollo-proxy-cache/compare/v9.0.7...v9.0.8) (2025-10-20)
 
 
