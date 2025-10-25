@@ -80,7 +80,7 @@
     ]
   },
   "optionalDependencies": {
-    "redis": "^4.7.0"
+    "redis": "^5.9.0"
   },
   "peerDependencies": {
     "@apollo/client": "^3",
