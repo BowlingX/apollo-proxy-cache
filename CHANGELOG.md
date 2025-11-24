@@ -1,3 +1,10 @@
+## [8.1.4](https://github.com/BowlingX/apollo-proxy-cache/compare/v8.1.3...v8.1.4) (2025-11-24)
+
+
+### Bug Fixes
+
+* removed the cache directive before reading the cached value ([33171d0](https://github.com/BowlingX/apollo-proxy-cache/commit/33171d076976c5ac0e45633fe928a832b364dbe9))
+
 ## [8.1.3](https://github.com/BowlingX/apollo-proxy-cache/compare/v8.1.2...v8.1.3) (2023-04-27)
 
 
