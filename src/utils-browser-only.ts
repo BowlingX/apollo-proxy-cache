@@ -3,6 +3,7 @@ import type {
   ListValueNode,
   StringValueNode,
   DirectiveNode,
+  OperationDefinitionNode,
 } from 'graphql'
 import { removeDirectivesFromDocument } from 'apollo-utilities'
 import _get from 'lodash/get'
@@ -35,8 +36,11 @@ export function getDirectiveArgumentsAsObject<K>(
   doc: DocumentNode,
   directive: string
 ) {
-  return _get(doc.definitions, '0.directives', [])
-    .filter((v: DirectiveNode) => v.name.value === directive)
+  const operationDef = doc.definitions.find(
+    (v) => v.kind === 'OperationDefinition' && v.directives
+  ) as OperationDefinitionNode | undefined
+  return operationDef?.directives
+    ?.filter((v: DirectiveNode) => v.name.value === directive)
     .reduce((next: Record<string, string[] | string>, v: DirectiveNode) => {
       return {
         ...v.arguments?.reduce(
@@ -54,7 +58,7 @@ export function getDirectiveArgumentsAsObject<K>(
         ),
         ...next,
       }
-    }, {}) as Directive<K>
+    }, {}) as Directive<K> | undefined
 }
 
 export type CacheKeyModifier = <T>(
@@ -72,12 +76,17 @@ export const calculateArguments = <K extends string, T = Record<string, any>>(
   cacheKeyModifier?: CacheKeyModifier,
   context?: T
 ) => {
-  const { id, timeout, modifier } = getDirectiveArgumentsAsObject<K>(
-    query,
-    DIRECTIVE
-  )
+  const directiveArgs = getDirectiveArgumentsAsObject<K>(query, DIRECTIVE)
+
+  if (!directiveArgs) {
+    throw new Error(
+      `@${DIRECTIVE} not found, this is unexpected and likely a bug. Please report this issue.`
+    )
+  }
+
+  const { id, timeout, modifier } = directiveArgs
   let thisId = modifier
-    ? modifier.reduce((next, path) => {
+    ? modifier?.reduce((next, path) => {
         return `${next}.${_get(variables, path, '')}`
       }, id)
     : id
