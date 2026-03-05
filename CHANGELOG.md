@@ -1,3 +1,10 @@
+## [8.1.5](https://github.com/BowlingX/apollo-proxy-cache/compare/v8.1.4...v8.1.5) (2026-03-05)
+
+
+### Bug Fixes
+
+* do not rely on definition order for directive arguments retrieval ([5460f22](https://github.com/BowlingX/apollo-proxy-cache/commit/5460f22b7ab1e2aa998c243291017e02ea5210bb))
+
 ## [8.1.4](https://github.com/BowlingX/apollo-proxy-cache/compare/v8.1.3...v8.1.4) (2025-11-24)
 
 
