@@ -1,9 +1,10 @@
 import type { RedisClientType } from 'redis'
 import { Cache } from './types.js'
 
-export class RedisCache<V = null | Record<string, any>>
-  implements Cache<string, V | null>
-{
+export class RedisCache<V = null | Record<string, any>> implements Cache<
+  string,
+  V | null
+> {
   client: RedisClientType
 
   constructor(client: RedisClientType) {

@@ -27,5 +27,6 @@
     "types": []
   },
   "include": ["src/**/*"],
+  "exclude": ["src/**/*.spec.ts"],
   "compileOnSave": false
 }

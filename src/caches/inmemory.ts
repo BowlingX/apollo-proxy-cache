@@ -9,9 +9,10 @@ interface CachedData<T> {
   timeout: number
 }
 
-export class InMemoryCache<K extends string = string, V = Record<string, any>>
-  implements Cache<K, V | null>
-{
+export class InMemoryCache<
+  K extends string = string,
+  V = Record<string, any>,
+> implements Cache<K, V | null> {
   cache: Map<string, CachedData<V>> = new Map()
 
   delete(key: string): Promise<boolean> {

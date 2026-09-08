@@ -20,7 +20,7 @@ export function removeCacheDirective(query: DocumentNode): DocumentNode {
         },
       },
     ],
-    query
+    query,
   ) as DocumentNode
 }
 
@@ -34,10 +34,10 @@ type Directive<K> = {
 
 export function getDirectiveArgumentsAsObject<K>(
   doc: DocumentNode,
-  directive: string
+  directive: string,
 ) {
   const operationDef = doc.definitions.find(
-    (v) => v.kind === 'OperationDefinition' && v.directives
+    (v) => v.kind === 'OperationDefinition' && v.directives,
   ) as OperationDefinitionNode | undefined
   return operationDef?.directives
     ?.filter((v: DirectiveNode) => v.name.value === directive)
@@ -49,12 +49,12 @@ export function getDirectiveArgumentsAsObject<K>(
               (v.value as ValueValueNodes).value ||
               ((v.value as ListValueNode).values
                 ? (v.value as ListValueNode).values?.map(
-                    (v) => (v as ValueValueNodes).value
+                    (v) => (v as ValueValueNodes).value,
                   )
                 : undefined),
             ...next,
           }),
-          {}
+          {},
         ),
         ...next,
       }
@@ -64,7 +64,7 @@ export function getDirectiveArgumentsAsObject<K>(
 export type CacheKeyModifier = <T>(
   key: string,
   variables?: Record<string, any>,
-  context?: T
+  context?: T,
 ) => string
 
 export const didTimeout = (timeout: number, time: number) =>
@@ -74,13 +74,13 @@ export const calculateArguments = <K extends string, T = Record<string, any>>(
   query: DocumentNode,
   variables?: Record<string, any>,
   cacheKeyModifier?: CacheKeyModifier,
-  context?: T
+  context?: T,
 ) => {
   const directiveArgs = getDirectiveArgumentsAsObject<K>(query, DIRECTIVE)
 
   if (!directiveArgs) {
     throw new Error(
-      `@${DIRECTIVE} not found, this is unexpected and likely a bug. Please report this issue.`
+      `@${DIRECTIVE} not found, this is unexpected and likely a bug. Please report this issue.`,
     )
   }
 

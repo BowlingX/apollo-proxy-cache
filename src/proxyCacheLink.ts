@@ -1,4 +1,4 @@
-import { ApolloLink, Observable, FetchResult } from '@apollo/client'
+import { ApolloLink, Observable, FetchResult } from '@apollo/client/core'
 import { hasDirectives } from 'apollo-utilities'
 import type { Subscription } from 'zen-observable-ts'
 import type { Cache } from './caches/types.js'
@@ -47,41 +47,53 @@ export const proxyCacheLink = <K extends string, V, T extends Cache<K, V>>(
       errorOnGet(e as Error)
       return forward(operation)
     }
-    let subscriber: Subscription
     return new Observable((observer) => {
+      let subscriber: Subscription | undefined
+
+      const forwardToNetwork = () => {
+        const obs: Observable<FetchResult> = server
+          ? forward(operation)
+          : Observable.of({
+              data: {},
+            })
+        subscriber = obs.subscribe({
+          next: ({ data, errors }) => {
+            if (!errors) {
+              queryCache.set(id, data as V, timeout).catch(errorOnSet)
+            }
+            observer.next({
+              data,
+              errors,
+            })
+          },
+          error: observer.error.bind(observer),
+          complete: observer.complete.bind(observer),
+        })
+      }
+
       queryCache
         .get(id)
-        .then((data) => {
-          if (data) {
-            observer.next({ data })
-            observer.complete()
-            return data
-          }
-          const obs: Observable<FetchResult> = server
-            ? forward(operation)
-            : Observable.of({
-                data: {},
-              })
-          subscriber = obs.subscribe({
-            next: ({ data, errors }) => {
-              if (!errors) {
-                queryCache.set(id, data as V, timeout).catch(errorOnSet)
-              }
-              observer.next({
-                data,
-                errors,
-              })
-            },
-            error: observer.error.bind(observer),
-            complete: observer.complete.bind(observer),
-          })
-          return data
-        })
-        .catch(errorOnGet)
+        .then(
+          (data) => {
+            if (observer.closed) return
+            if (data) {
+              observer.next({ data })
+              observer.complete()
+              return
+            }
+            forwardToNetwork()
+          },
+          (e) => {
+            // Never fail the request if the cache is not available
+            if (observer.closed) return
+            errorOnGet(e)
+            forwardToNetwork()
+          },
+        )
+        .catch((e) => observer.error(e))
+
       return () => {
-        if (subscriber) {
-          subscriber.unsubscribe()
-        }
+        subscriber?.unsubscribe()
       }
     })
   })
