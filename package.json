@@ -101,7 +101,7 @@
     "lodash": "^4"
   },
   "dependencies": {
-    "body-parser": "^1.20.3"
+    "body-parser": "^2.3.0"
   },
   "engines": {
     "node": ">=16"
