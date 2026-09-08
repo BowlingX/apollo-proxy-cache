@@ -1,3 +1,10 @@
+## [10.1.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v10.1.0...v10.1.1) (2026-09-08)
+
+
+### Bug Fixes
+
+* use provenance for publishing ([93868bc](https://github.com/BowlingX/apollo-proxy-cache/commit/93868bc7d31cf927f79ac5c883dfe349c3324726))
+
 # [10.1.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v10.0.1...v10.1.0) (2026-09-08)
 
 
