@@ -1,3 +1,10 @@
+# [10.1.0](https://github.com/BowlingX/apollo-proxy-cache/compare/v10.0.1...v10.1.0) (2026-09-08)
+
+
+### Features
+
+* fall back to the network when the cache lookup fails in proxyCacheLink, switched to oxlint/oxfmt, bumped to typescript 7, added tests ([1a2c3c1](https://github.com/BowlingX/apollo-proxy-cache/commit/1a2c3c12cd4bd4fe0aac0d06c3112eccc9b717df))
+
 ## [10.0.1](https://github.com/BowlingX/apollo-proxy-cache/compare/v10.0.0...v10.0.1) (2026-03-05)
 
 
